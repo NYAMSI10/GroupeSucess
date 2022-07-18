@@ -360,17 +360,13 @@
      
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#amicale-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Amicale</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-gem"></i><span>Primes</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="amicale-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Ajouter un évènement</span>
-            </a>
-          </li>
+       
           <li>
             <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Liste des M</span>
+              <i class="bi bi-circle"></i><span>Liste des primes</span>
             </a>
           </li>
         </ul>
