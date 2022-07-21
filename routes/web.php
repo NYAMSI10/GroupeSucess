@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +22,45 @@ Route::get('/', function () {
 
 Route::get('Home', function () {
     return view('Home/home');
+})->name('Home');
+
+
+// Teacher 
+
+Route::controller(TeacherController::class)->group(function () {
+  
+    Route::get('Ajoutez_Enseignant', 'teacher')->name('teacher');
+    Route::post('saveteacher', 'createteacher')->name('saveteacher');
+    Route::get('Liste_Enseignant_Jour', 'listJour')->name('listJour');
+    Route::get('Liste_Enseignant/Soir', 'listSoir')->name('listSoir');
+    Route::get('Liste_Enseignant/Vacances', 'listVacances')->name('listVacances');
+    Route::get('Liste_Enseignant/Prépa-Concours', 'listprepa')->name('listPrépa-Concours');
+
+
+
+
+
+});
+
+// matiere 
+
+Route::controller(MatiereController::class)->group(function () {
+  
+    Route::get('Ajoutez_Matiére', 'matiere')->name('matiere');
+    Route::post('save', 'creatematiere')->name('save');
+    Route::get('Liste_Matiére', 'list')->name('list');
+
+
+
+});
+
+// classe 
+
+Route::controller(ClasseController::class)->group(function () {
+  
+    Route::get('Ajoutez_Classe', 'classe')->name('classe');
+    Route::post('saveclasse', 'createclasse')->name('saveclasse');
+    Route::get('Liste_Classe', 'list')->name('liste');
+
+
 });
