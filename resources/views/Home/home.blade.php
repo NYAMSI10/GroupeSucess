@@ -3,657 +3,555 @@
 @section('content')
 
 
-<div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section dashboard">
-      <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
+            <!-- ============ Body content start ============= -->
+            
+                <div class="breadcrumb">
+                    <h1 class="mr-2">Version 2</h1>
+                    <ul>
+                        <li><a href="">Dashboard</a></li>
+                        <li>Version 2</li>
+                    </ul>
                 </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                <div class="separator-breadcrumb border-top"></div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <!-- CARD ICON-->
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="card card-icon mb-4">
+                                    <div class="card-body text-center"><i class="i-Data-Upload"></i>
+                                        <p class="text-muted mt-2 mb-2">Today&apos;s Upload</p>
+                                        <p class="text-primary text-24 line-height-1 m-0">21</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="card card-icon mb-4">
+                                    <div class="card-body text-center"><i class="i-Add-User"></i>
+                                        <p class="text-muted mt-2 mb-2">New Users</p>
+                                        <p class="text-primary text-24 line-height-1 m-0">21</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="card card-icon mb-4">
+                                    <div class="card-body text-center"><i class="i-Money-2"></i>
+                                        <p class="text-muted mt-2 mb-2">Total sales</p>
+                                        <p class="text-primary text-24 line-height-1 m-0">4021</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="card card-icon-big mb-4">
+                                    <div class="card-body text-center"><i class="i-Money-2"></i>
+                                        <p class="line-height-1 text-title text-18 mt-2 mb-0">4021</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="card card-icon-big mb-4">
+                                    <div class="card-body text-center"><i class="i-Gear"></i>
+                                        <p class="line-height-1 text-title text-18 mt-2 mb-0">4021</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="card card-icon-big mb-4">
+                                    <div class="card-body text-center"><i class="i-Bell"></i>
+                                        <p class="line-height-1 text-title text-18 mt-2 mb-0">4021</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body p-0">
+                                <h5 class="card-title m-0 p-3">Sales</h5>
+                                <div id="echart4" style="height: 300px"></div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="card-title">Last Month Summary</div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Item</th>
+                                                    <th scope="col">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Portable Speaker</td>
+                                                    <td class="font-weight-bold text-success">+ $1200</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Portable Headphone</td>
+                                                    <td class="font-weight-bold">In Stock</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Speaker</td>
+                                                    <td class="text-danger">Out of stock</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Watch</td>
+                                                    <td class="text-warning font-weight-bold">Low stock</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="echart5" style="height: 200px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="card-title">Top Authors</div>
+                                <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3"><img class="avatar-md rounded mr-3" src="dist-assets/images/faces/2.jpg" alt="" />
+                                    <div class="flex-grow-1">
+                                        <h6 class="m-0">David Hopkins</h6>
+                                        <p class="m-0 text-small text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline-primary btn-rounded btn-sm">Follow</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3"><img class="avatar-md rounded mr-3" src="dist-assets/images/faces/3.jpg" alt="" />
+                                    <div class="flex-grow-1">
+                                        <h6 class="m-0">James Mitchell</h6>
+                                        <p class="m-0 text-small text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline-primary btn-rounded btn-sm">Follow</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3"><img class="avatar-md rounded mr-3" src="dist-assets/images/faces/4.jpg" alt="" />
+                                    <div class="flex-grow-1">
+                                        <h6 class="m-0">Jessica Mitchell</h6>
+                                        <p class="m-0 text-small text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline-primary btn-rounded btn-sm">Follow</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
+                <!-- end of row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card o-hidden mb-4">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="w-50 float-left card-title m-0">New Users</h3>
+                                <div class="dropdown dropleft text-right w-50 float-right">
+                                    <button class="btn bg-gray-100" id="dropdownMenuButton_table1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="nav-icon i-Gear-2"></i></button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_table1"><a class="dropdown-item" href="#">Add new user</a><a class="dropdown-item" href="#">View All users</a><a class="dropdown-item" href="#">Something else here</a></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table dataTable-collapse text-center" id="user_table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Avatar</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Smith</td>
+                                                <td><img class="rounded-circle m-0 avatar-sm-table" src="dist-assets/images/faces/1.jpg" alt="" /></td>
+                                                <td>Smith@gmail.com</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                                <td><a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jhon Doe</td>
+                                                <td><img class="rounded-circle m-0 avatar-sm-table" src="dist-assets/images/faces/1.jpg" alt="" /></td>
+                                                <td>Jhon@gmail.com</td>
+                                                <td><span class="badge badge-info">Pending</span></td>
+                                                <td><a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Alex</td>
+                                                <td><img class="rounded-circle m-0 avatar-sm-table" src="dist-assets/images/faces/1.jpg" alt="" /></td>
+                                                <td>Otto@gmail.com</td>
+                                                <td><span class="badge badge-warning">Not Active</span></td>
+                                                <td><a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
+                    <!-- end of col-->
+                    <div class="col-md-6">
+                        <div class="card o-hidden mb-4">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="w-50 float-left card-title m-0">Total Sales</h3>
+                                <div class="dropdown dropleft text-right w-50 float-right">
+                                    <button class="btn bg-gray-100" id="dropdownMenuButton_table2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="nav-icon i-Gear-2"></i></button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_table2"><a class="dropdown-item" href="#">Add new user</a><a class="dropdown-item" href="#">View All users</a><a class="dropdown-item" href="#">Something else here</a></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table dataTable-collapse text-center" id="sales_table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Product</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Watch</td>
+                                                <td>12-10-2019</td>
+                                                <td>$30</td>
+                                                <td><span class="badge badge-success">Delivered</span></td>
+                                                <td><a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Iphone</td>
+                                                <td>23-10-2019</td>
+                                                <td>$300</td>
+                                                <td><span class="badge badge-info">Pending</span></td>
+                                                <td><a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Watch</td>
+                                                <td>12-10-2019</td>
+                                                <td>$30</td>
+                                                <td><span class="badge badge-warning">Not Delivered</span></td>
+                                                <td><a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-
+                    <!-- end of col-->
+                    <!-- travel-different-countries-->
+                    <div class="col-lg-4 col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">Travel Different Countries</div>
+                                <div class="ul-widget-app__poll-list mb-4">
+                                    <h3 class="heading mr-2">2589</h3>
+                                    <div class="d-flex"><span class="text-muted text-12">From Uganda</span><span class="t-font-boldest ml-auto">33%<i class="i-Turn-Up-2 text-14 text-success font-weight-700"></i></span></div>
+                                    <div class="progress progress--height-2 mb-3">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="ul-widget-app__poll-list mb-4">
+                                    <h3 class="heading mr-2">4589</h3>
+                                    <div class="d-flex"><span class="text-muted text-12">From U.S.A</span><span class="t-font-boldest ml-auto">63%<i class="i-Turn-Down-2 text-14 text-danger font-weight-700"></i></span></div>
+                                    <div class="progress progress--height-2 mb-3">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="ul-widget-app__poll-list mb-4">
+                                    <h3 class="heading mr-2">7589</h3>
+                                    <div class="d-flex"><span class="text-muted text-12">From Canada</span><span class="t-font-boldest ml-auto">73%<i class="i-Turn-Up-2 text-14 text-success font-weight-700"></i></span></div>
+                                    <div class="progress progress--height-2 mb-3">
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="ul-widget-app__poll-list mb-4">
+                                    <h3 class="heading mr-2">3589</h3>
+                                    <div class="d-flex"><span class="text-muted">From France</span><span class="t-font-boldest ml-auto">13%<i class="i-Turn-Down-2 text-14 text-danger font-weight-700"></i></span></div>
+                                    <div class="progress progress--height-2 mb-3">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 13%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- mutual-friend-->
+                    <div class="col-lg-4 col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-header purple-500 text-purple-500 p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="card-title text-white mb-0">Mutual Friends</div>
+                                    <div class="ul-widget-app__bar ml-auto">asd</div>
+                                </div>
+                                <div class="input-group input-group-lg">
+                                    <input class="form-control" type="text" placeholder="search by username or email..." aria-label="Large" aria-describedby="inputGroup-sizing-sm" /><span class="ul-widget-app__find-font"><i class="i-Search-People font-weight-500"></i></span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="ul-widget-app__social-site mt-4 mb-4">
+                                    <div class="row">
+                                        <div class="col-4 text-center">
+                                            <div class="ul-widget-app__social-friends"><img class="profile-picture avatar-lg mb-2" src="dist-assets/images/faces/4.jpg" alt="" />
+                                                <div class="ul-widget-app__small-title"><span class="t-font-bolder">Elizabeth Olsen</span><span class="text-primary"><a href="">Invite</a></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <div class="ul-widget-app__social-friends"><img class="profile-picture avatar-lg mb-2" src="dist-assets/images/faces/2.jpg" alt="" />
+                                                <div class="ul-widget-app__small-title"><span class="t-font-bolder">Jack Olsen</span><span class="text-primary"><a href="">Invite</a></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <div class="ul-widget-app__social-friends"><img class="profile-picture avatar-lg mb-2" src="dist-assets/images/faces/5.jpg" alt="" />
+                                                <div class="ul-widget-app__small-title"><span class="t-font-bolder">DAn Olsen</span><span class="text-primary"><a href="">Invite</a></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ul-widget-app__social-button mt-5">
+                                    <button class="btn btn-block btn-facebook btn-icon m-1" type="button"><span class="ul-btn__text">Invite Facebook</span><span class="ul-btn__icon"><i class="i-Facebook-2"></i></span></button>
+                                    <button class="btn btn-block btn-twitter btn-icon m-1" type="button"><span class="ul-btn__text">Invite Twitter</span><span class="ul-btn__icon"><i class="i-Twitter"></i></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- notification-->
+                    <div class="col-lg-4 col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">Notification</div>
+                                <div class="ul-widget-app__browser-list">
+                                    <div class="ul-widget-app__browser-list-1 mb-4"><i class="i-Bell1 text-white bg-warning rounded-circle p-2 mr-3"></i><span class="text-15">You have 9 pending Tasks</span><span class="text-mute">in a sec</span></div>
+                                    <div class="ul-widget-app__browser-list-1 mb-4"><i class="i-Internet text-white green-500 rounded-circle p-2 mr-3"></i><span class="text-15">Traffic Overloaded</span><span class="text-mute">4 Hours ago</span></div>
+                                    <div class="ul-widget-app__browser-list-1 mb-4"><i class="i-Shopping-Cart text-white cyan-500 rounded-circle p-2 mr-3"></i><span class="text-15">New Order Received</span><span class="text-mute">yesterday </span></div>
+                                    <div class="ul-widget-app__browser-list-1 mb-4"><i class="i-Add-UserStar text-white teal-500 rounded-circle p-2 mr-3"></i><span class="text-15">New User </span><span class="text-mute">2 April </span></div>
+                                    <div class="ul-widget-app__browser-list-1 mb-4"><i class="i-Bell text-white purple-500 rounded-circle p-2 mr-3"></i><span class="text-15">New Update </span><span class="text-mute">2 April </span></div>
+                                    <div class="ul-widget-app__browser-list-1 mb-4"><i class="i-Shopping-Cart text-white bg-danger rounded-circle p-2 mr-3"></i><span class="text-15">New Order Received</span><span class="text-mute">yesterday </span></div>
+                                    <div class="ul-widget-app__browser-list-1 mb-4"><i class="i-Internet text-white green-500 rounded-circle p-2 mr-3"></i><span class="text-15">Traffic Overloaded</span><span class="text-mute">4 Hours ago</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- best-sellers-->
+                    <div class="col-xl-8 col-md-12 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="ul-widget__head">
+                                    <div class="ul-widget__head-label">
+                                        <h3 class="ul-widget__head-title">Best Sellers</h3>
+                                    </div>
+                                    <div class="ul-widget__head-toolbar">
+                                        <ul class="nav nav-tabs nav-tabs-line nav-tabs-bold ul-widget-nav-tabs-line" role="tablist">
+                                            <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#ul-widget5-tab1-content" role="tab" aria-selected="true">Latest</a></li>
+                                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ul-widget5-tab2-content" role="tab" aria-selected="false">Month</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ul-widget__body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active show" id="ul-widget5-tab1-content">
+                                            <div class="ul-widget5">
+                                                <div class="ul-widget5__item">
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__pic"><img src="dist-assets/images/products/iphone-1.jpg" alt="Third slide" /></div>
+                                                        <div class="ul-widget5__section"><a class="ul-widget4__title" href="#">Great Logo Designn</a>
+                                                            <p class="ul-widget5__desc">UI lib admin themes.</p>
+                                                            <div class="ul-widget5__info"><span>Author:</span><span class="text-primary">Jon Snow</span><span>Released:</span><span class="text-primary">23.08.17</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">19,200</span><span class="ul-widget5__sales text-mute">sales</span></div>
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">1046</span><span class="ul-widget5__sales text-mute">votes</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="ul-widget5__item">
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__pic"><img src="dist-assets/images/products/speaker-1.jpg" alt="Third slide" /></div>
+                                                        <div class="ul-widget5__section"><a class="ul-widget4__title" href="#">Great Logo Designn</a>
+                                                            <p class="ul-widget5__desc">UI lib admin themes.</p>
+                                                            <div class="ul-widget5__info"><span>Author:</span><span class="text-primary">Jon Snow</span><span>Released:</span><span class="text-primary">23.08.17</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">29,200</span><span class="ul-widget5__sales text-mute">sales</span></div>
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">4500</span><span class="ul-widget5__sales text-mute">votes</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="ul-widget5__item">
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__pic"><img src="dist-assets/images/products/watch-1.jpg" alt="Third slide" /></div>
+                                                        <div class="ul-widget5__section"><a class="ul-widget4__title" href="#">Great Logo Designn</a>
+                                                            <p class="ul-widget5__desc">UI lib admin themes.</p>
+                                                            <div class="ul-widget5__info"><span>Author:</span><span class="text-primary">Jon Snow</span><span>Released:</span><span class="text-primary">23.08.17</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">23,200</span><span class="ul-widget5__sales text-mute">sales</span></div>
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">2046</span><span class="ul-widget5__sales text-mute">votes</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="ul-widget5-tab2-content">
+                                            <div class="ul-widget5">
+                                                <div class="ul-widget5__item">
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__pic"><img src="dist-assets/images/products/speaker-1.jpg" alt="Third slide" /></div>
+                                                        <div class="ul-widget5__section"><a class="ul-widget4__title" href="#">Great Logo Designn</a>
+                                                            <p class="ul-widget5__desc">UI lib admin themes.</p>
+                                                            <div class="ul-widget5__info"><span>Author:</span><span class="text-primary">Jon Snow</span><span>Released:</span><span class="text-primary">23.08.17</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">19,200</span><span class="ul-widget5__sales text-mute">sales</span></div>
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">1046</span><span class="ul-widget5__sales text-mute">votes</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="ul-widget5__item">
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__pic"><img src="dist-assets/images/products/iphone-1.jpg" alt="Third slide" /></div>
+                                                        <div class="ul-widget5__section"><a class="ul-widget4__title" href="#">Great Logo Designn</a>
+                                                            <p class="ul-widget5__desc">UI lib admin themes.</p>
+                                                            <div class="ul-widget5__info"><span>Author:</span><span class="text-primary">Jon Snow</span><span>Released:</span><span class="text-primary">23.08.17</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">29,200</span><span class="ul-widget5__sales text-mute">sales</span></div>
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">4500</span><span class="ul-widget5__sales text-mute">votes</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="ul-widget5__item">
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__pic"><img src="dist-assets/images/products/watch-1.jpg" alt="Third slide" /></div>
+                                                        <div class="ul-widget5__section"><a class="ul-widget4__title" href="#">Great Logo Designn</a>
+                                                            <p class="ul-widget5__desc">UI lib admin themes.</p>
+                                                            <div class="ul-widget5__info"><span>Author:</span><span class="text-primary">Jon Snow</span><span>Released:</span><span class="text-primary">23.08.17</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ul-widget5__content">
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">23,200</span><span class="ul-widget5__sales text-mute">sales</span></div>
+                                                        <div class="ul-widget5__stats"><span class="ul-widget5__number">2046</span><span class="ul-widget5__sales text-mute">votes</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- latest-log-->
+                    <div class="col-lg-4 col-xl-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="ul-widget__head">
+                                    <div class="ul-widget__head-label">
+                                        <h3 class="ul-widget__head-title">Latest Log</h3>
+                                    </div>
+                                    <div class="ul-widget__head-toolbar">
+                                        <ul class="nav nav-tabs nav-tabs-line nav-tabs-bold ul-widget-nav-tabs-line" role="tablist">
+                                            <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#__g-widget-s6-tab1-content" role="tab" aria-selected="true">Today</a></li>
+                                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#__g-widget-s6-tab2-content" role="tab" aria-selected="false">Month</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ul-widget__body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active show" id="__g-widget-s6-tab1-content">
+                                            <div class="ul-widget-s6__items">
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-primary ul-widget6__dot"></p>
+                                                    </span><span class="ul-widget-s6__text">12 new users registered</span><span class="ul-widget-s6__time">Just Now</span></div>
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-success ul-widget6__dot"></p>
+                                                    </span>
+                                                    <p class="ul-widget-s6__text">System shutdown<span class="badge badge-pill badge-primary m-2">Primary</span></p><span class="ul-widget-s6__time">14 mins</span>
+                                                </div>
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-warning ul-widget6__dot"></p>
+                                                    </span><span class="ul-widget-s6__text">System error -<a class="typo_link text-danger" href="">Danger state text</a></span><span class="ul-widget-s6__time">2 hrs </span></div>
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-danger ul-widget6__dot"></p>
+                                                    </span><span class="ul-widget-s6__text">12 new users registered</span><span class="ul-widget-s6__time">Just Now</span></div>
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-info ul-widget6__dot"></p>
+                                                    </span>
+                                                    <p class="ul-widget-s6__text">System shutdown<span class="badge badge-pill badge-success m-2">Primary</span></p><span class="ul-widget-s6__time">14 mins</span>
+                                                </div>
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-dark ul-widget6__dot"></p>
+                                                    </span><span class="ul-widget-s6__text">System error -<a class="typo_link text-danger" href="">Danger state text</a></span><span class="ul-widget-s6__time">2 hrs </span></div>
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-primary ul-widget6__dot"></p>
+                                                    </span><span class="ul-widget-s6__text">12 new users registered</span><span class="ul-widget-s6__time">Just Now</span></div>
+                                                <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                        <p class="badge-dot-success ul-widget6__dot"></p>
+                                                    </span>
+                                                    <p class="ul-widget-s6__text">System shutdown<span class="badge badge-pill badge-danger m-2">Primary</span></p><span class="ul-widget-s6__time">14 mins</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="__g-widget-s6-tab2-content">
+                                            <div class="ul-widget2">
+                                                <div class="ul-widget-s6__items">
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-danger ul-widget6__dot"></p>
+                                                        </span><span class="ul-widget-s6__text">44 new users registered</span><span class="ul-widget-s6__time">Just Now</span></div>
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-warning ul-widget6__dot"></p>
+                                                        </span>
+                                                        <p class="ul-widget-s6__text">System shutdown<span class="badge badge-pill badge-primary m-2">Primary</span></p><span class="ul-widget-s6__time">14 mins</span>
+                                                    </div>
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-primary ul-widget6__dot"></p>
+                                                        </span><span class="ul-widget-s6__text">System error -<a class="typo_link text-danger" href="">Danger state text</a></span><span class="ul-widget-s6__time">2 hrs </span></div>
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-danger ul-widget6__dot"></p>
+                                                        </span><span class="ul-widget-s6__text">12 new users registered</span><span class="ul-widget-s6__time">Just Now</span></div>
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-info ul-widget6__dot"></p>
+                                                        </span>
+                                                        <p class="ul-widget-s6__text">System shutdown<span class="badge badge-pill badge-success m-2">Primary</span></p><span class="ul-widget-s6__time">14 mins</span>
+                                                    </div>
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-dark ul-widget6__dot"></p>
+                                                        </span><span class="ul-widget-s6__text">System error -<a class="typo_link text-danger" href="">Danger state text</a></span><span class="ul-widget-s6__time">2 hrs </span></div>
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-primary ul-widget6__dot"></p>
+                                                        </span><span class="ul-widget-s6__text">12 new users registered</span><span class="ul-widget-s6__time">Just Now</span></div>
+                                                    <div class="ul-widget-s6__item"><span class="ul-widget-s6__badge">
+                                                            <p class="badge-dot-success ul-widget6__dot"></p>
+                                                        </span><span class="ul-widget-s6__text">System shutdown<span class="badge badge-pill badge-danger m-2">Primary</span></span><span class="ul-widget-s6__time">14 mins</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-
-            </div><!-- End Customers Card -->
-
-            <!-- Reports -->
-            <div class="col-12">
-              <div class="card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                  <!-- Line Chart -->
-                  <div id="reportsChart"></div>
-
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
-
-                </div>
-
-              </div>
-            </div><!-- End Reports -->
-
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Recent Sales -->
-
-            <!-- Top Selling -->
-            <div class="col-12">
-              <div class="card top-selling overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Top Selling -->
-
-          </div>
-        </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-
-          <!-- Recent Activity -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-              <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                  </div>
-                </div><!-- End activity item-->
-
-              </div>
-
-            </div>
-          </div><!-- End Recent Activity -->
-
-          <!-- Budget Report -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
-              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                    legend: {
-                      data: ['Allocated Budget', 'Actual Spending']
-                    },
-                    radar: {
-                      // shape: 'circle',
-                      indicator: [{
-                          name: 'Sales',
-                          max: 6500
-                        },
-                        {
-                          name: 'Administration',
-                          max: 16000
-                        },
-                        {
-                          name: 'Information Technology',
-                          max: 30000
-                        },
-                        {
-                          name: 'Customer Support',
-                          max: 38000
-                        },
-                        {
-                          name: 'Development',
-                          max: 52000
-                        },
-                        {
-                          name: 'Marketing',
-                          max: 25000
-                        }
-                      ]
-                    },
-                    series: [{
-                      name: 'Budget vs spending',
-                      type: 'radar',
-                      data: [{
-                          value: [4200, 3000, 20000, 35000, 50000, 18000],
-                          name: 'Allocated Budget'
-                        },
-                        {
-                          value: [5000, 14000, 28000, 26000, 42000, 21000],
-                          name: 'Actual Spending'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Budget Report -->
-
-          <!-- Website Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div>
-
-         
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-              <div class="news">
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-2.jpg" alt="">
-                  <h4><a href="#">Quidem autem et impedit</a></h4>
-                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-3.jpg" alt="">
-                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-4.jpg" alt="">
-                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-5.jpg" alt="">
-                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-            </div>
-          </div><!-- End News & Updates -->
-
-        </div><!-- End Right side columns -->
-
-      </div>
-    </section>
-
-    --!>
-
-
-
-
-
-
+                <!-- end of row-->
+                <!-- end of main-content -->
+            
+          
 
 
 
