@@ -42,7 +42,7 @@ $pass = Rand_string(8);
           $nom = $req->nom;
           $email = $req->email;
           $tel = $req->tel;
-          $quartier = $req->nom;
+          $quartier = $req->quartier;
           $classe = $req->classe;
           $matiere = $req->matiere;
           $periode = $req->periode;
@@ -63,7 +63,7 @@ $pass = Rand_string(8);
     
     $teacher->save();
 
-    $idteacher = DB::table('teacher')->where('tel',$tel)->value("idteacher");
+    $nomteacher = DB::table('teacher')->where('tel',$tel)->value("nom");
 
 
       
@@ -74,8 +74,8 @@ $pass = Rand_string(8);
                
          $cla = new Classe_teacher([
            
-            'idteacher'=>$idteacher,
-          'idclasse'=>$classe[$i],
+            'nomteacher'=>$nomteacher,
+          'nomclasse'=>$classe[$i],
         
 
          ]);
@@ -88,8 +88,8 @@ $pass = Rand_string(8);
                
                     $mat = new Matiere_teacher([
                       
-                       'idteacher'=>$idteacher,
-                     'idmatiere'=>$matiere[$i],
+                       'nomteacher'=>$nomteacher,
+                     'nommatiere'=>$matiere[$i],
                    
            
                     ]);
@@ -102,8 +102,8 @@ $pass = Rand_string(8);
                
                                 $period = new Periode_teacher([
                                   
-                                   'idteacher'=>$idteacher,
-                                 'idperiode'=>$periode[$i],
+                                   'nomteacher'=>$nomteacher,
+                                 'nomperiode'=>$periode[$i],
                                
                        
                                 ]);
@@ -125,9 +125,23 @@ $pass = Rand_string(8);
         $periode = Periode_teacher::all();
         $mat = Matiere_teacher::all();
 
-
+        
 
         return view('Teacher/list', compact('mat','clas','periode','teacher'));
+    }
+
+
+
+    public function listSoir()
+    {
+        $teacher = Teacher::all();
+        $clas = Classe_teacher::all();
+        $periode = Periode_teacher::all();
+        $mat = Matiere_teacher::all();
+
+        
+
+        return view('Teacher/listsoir', compact('mat','clas','periode','teacher'));
     }
 
 

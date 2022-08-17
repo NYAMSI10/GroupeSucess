@@ -31,8 +31,8 @@ Route::controller(TeacherController::class)->group(function () {
   
     Route::get('Ajoutez_Enseignant', 'teacher')->name('teacher');
     Route::post('saveteacher', 'createteacher')->name('saveteacher');
-    Route::get('Liste_Enseignant_Jour', 'listJour')->name('listJour');
-    Route::get('Liste_Enseignant/Soir', 'listSoir')->name('listSoir');
+    Route::get('Liste/Enseignant/Jour', 'listJour')->name('listJour');
+    Route::get('Liste/Enseignant/Soir', 'listSoir')->name('listSoir');
     Route::get('Liste_Enseignant/Vacances', 'listVacances')->name('listVacances');
     Route::get('Liste_Enseignant/Prépa-Concours', 'listprepa')->name('listPrépa-Concours');
 

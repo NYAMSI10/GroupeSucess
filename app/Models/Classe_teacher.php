@@ -12,8 +12,8 @@ class Classe_teacher extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'idclasse',
-        'idteacher',
+        'nomclasse',
+        'nomteacher',
         
     ];
 }

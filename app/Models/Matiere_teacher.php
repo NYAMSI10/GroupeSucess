@@ -13,8 +13,8 @@ class Matiere_teacher extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'idmatiere',
-        'idteacher',
+        'nommatiere',
+        'nomteacher',
         
     ];
 }

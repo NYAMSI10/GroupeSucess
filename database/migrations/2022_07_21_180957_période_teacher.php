@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('periode_teacher', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('idteacher');
-            $table->integer('idperiode');
+            $table->string('nomteacher');
+            $table->string('nomperiode');
             $table->timestamps();
 
-            $table->foreign('idteacher')->references('idteacher')->on('teacher');
-            $table->foreign('idperiode')->references('idperiode')->on('periode');
+         
 
         });
     }

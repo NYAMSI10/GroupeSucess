@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="breadcrumb">
-                    <h1>Liste des Enseignants du Cours du Jour</h1>
+                    <h1>Liste des Enseignants du Cours du Soir</h1>
                   
                 </div>
     @if(session('sucess'))
@@ -35,7 +35,7 @@
 
                                         <tbody>
                                         <?php  foreach ($periode as $period) {
-                                     if ($period['nomperiode'] == "Jour") {
+                                     if ($period['nomperiode'] == "Soir") {
                                       
                                         foreach ($teacher as $teach) {
                                       

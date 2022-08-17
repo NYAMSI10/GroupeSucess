@@ -7,7 +7,7 @@
                         </div>
 
                     @endif
-                    
+
 <div class="col-md-20">
                         <div class="card">
                             <div class="card-body">
@@ -74,7 +74,7 @@
                                
 							   ?>       
                                       <div class="form-check" style="margin-left:2%">
-  <input class="form-check-input" type="checkbox" name="classe[]" value="<?= $class->idclasse   ?>" >
+  <input class="form-check-input" type="checkbox" name="classe[]" value="<?= $class->nom   ?>" >
   <label  >
  <?= $class->nom   ?> 
   </label>
@@ -95,7 +95,7 @@
                                
 							   ?>       
                                       <div class="form-check" style="margin-left:2%">
-  <input class="form-check-input" type="checkbox" name="matiere[]" value=" <?= $mate->idmatiere   ?>"  >
+  <input class="form-check-input" type="checkbox" name="matiere[]" value=" <?= $mate->nom   ?>"  >
   <label  >
  <?= $mate->nom   ?> 
  
@@ -124,7 +124,7 @@
                                
                                       ?>
                                       <div class="form-check" style="margin-left:2%">
-  <input class="form-check-input" type="checkbox" name="periode[]" value="<?= $period->idperiode   ?> "  >
+  <input class="form-check-input" type="checkbox" name="periode[]" value="<?= $period->nom   ?> "  >
   <label >
   <?= $period->nom   ?> 
  
