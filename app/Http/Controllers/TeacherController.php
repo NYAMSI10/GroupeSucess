@@ -3,146 +3,103 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
-use App\Models\Classe_teacher;
 use App\Models\Matiere;
-use App\Models\Matiere_teacher;
 use App\Models\Periode;
 use App\Models\Periode_teacher;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
-       
-    public function teacher()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $mat = Matiere::all();
-        $clas = Classe::all();
-        $periode = Periode::all();
-
-        return view('Teacher/ajoutez', compact('mat','clas','periode'));
-    }
-
-
-
-    public function createteacher(Request $req )
-    {
-           
-function Rand_string( $length ) {
-
-	$chars = "ABCDEFGHI012345JKLMNOPQRSTUVWXYZ6789";
-	return substr(str_shuffle($chars),0,$length);
-
-}
-
-$pass = Rand_string(8);
-
-          $nom = $req->nom;
-          $email = $req->email;
-          $tel = $req->tel;
-          $quartier = $req->quartier;
-          $classe = $req->classe;
-          $matiere = $req->matiere;
-          $periode = $req->periode;
-
-           $a =count($classe);
-           $b =count($matiere);
-           $c =count($periode);
-
-          $teacher = new Teacher([
-
-          'nom'=>$nom,
-          'email'=>$email,
-          'tel'=>$tel,
-          'quartier'=>$quartier,
-          'password'=>Hash::make($pass),
-          ]
-         );
-    
-    $teacher->save();
-
-    $nomteacher = DB::table('teacher')->where('tel',$tel)->value("nom");
-
-
-      
-
-
-
-          for ($i=0; $i <$a ; $i++) {
-               
-         $cla = new Classe_teacher([
-           
-            'nomteacher'=>$nomteacher,
-          'nomclasse'=>$classe[$i],
-        
-
-         ]);
-            
-         $cla->save();
-                   }
-
-
-                   for ($i=0; $i <$b ; $i++) {
-               
-                    $mat = new Matiere_teacher([
-                      
-                       'nomteacher'=>$nomteacher,
-                     'nommatiere'=>$matiere[$i],
-                   
-           
-                    ]);
-                       
-                    $mat->save();
-                              }
-
-
-                              for ($i=0; $i <$c ; $i++) {
-               
-                                $period = new Periode_teacher([
-                                  
-                                   'nomteacher'=>$nomteacher,
-                                 'nomperiode'=>$periode[$i],
-                               
-                       
-                                ]);
-                                   
-                                $period->save();
-                                          }
-
-                   return redirect('Ajoutez_Enseignant')->with('sucess', 'Cet enseignant a été ajouté avec sucess'); 
-
-        
-
-    }
-
-
-    public function listJour()
-    {
-        $teacher = Teacher::all();
-        $clas = Classe_teacher::all();
+        $teacher = Teacher::orderBy('nom', 'asc')->get();
         $periode = Periode_teacher::all();
-        $mat = Matiere_teacher::all();
-
-        
-
-        return view('Teacher/list', compact('mat','clas','periode','teacher'));
+        return view('teacher.jour', compact('teacher','periode'));
     }
 
-
-
-    public function listSoir()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $teacher = Teacher::all();
-        $clas = Classe_teacher::all();
-        $periode = Periode_teacher::all();
-        $mat = Matiere_teacher::all();
-
-        
-
-        return view('Teacher/listsoir', compact('mat','clas','periode','teacher'));
+          $classe = Classe::all();
+          $periode = Periode::all();
+          $matiere = Matiere::all();
+        return view('teacher.index', compact('classe','periode', 'matiere'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate(
+            [
+                'nom' => 'required',
+                'email' => 'required|unique:teacher',
+                'quartier' => 'required|unique:teacher',
+                'tel' => 'required',
+                'classe[]' => 'required',
+                'matiere[]' => 'required',
+                'periode[]' => 'required',
 
+            ],
+        );
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Teacher  $teacher
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Teacher $teacher)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Teacher  $teacher
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Teacher $teacher)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Teacher  $teacher
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Teacher $teacher)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Teacher  $teacher
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Teacher $teacher)
+    {
+        //
+    }
 }
