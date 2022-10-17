@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
-});
+    return view('main');
+})->name('/');
+Route::get('Connexion', function () {
+    return view('login');
+})->name('connexion');
 
+Route::middleware('isAdmin')->group(function () {
 Route::prefix('admin')->group(function () {
 
     Route::get('/Dashboard', function () {
@@ -44,4 +48,5 @@ Route::controller(TeacherController::class)->name('teacher.')->group(function ()
 Route::resource('matiere', MatiereController::class);
 Route::resource('teacher', TeacherController::class);
 
+});
 });
