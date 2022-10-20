@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('periode', function (Blueprint $table) {
-            $table->integer('idperiode', true);
+        Schema::create('periodes', function (Blueprint $table) {
+            $table->id();
             $table->string('nom');
-           
-          
+
+
             $table->timestamps();
         });
     }
@@ -29,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-           Schema::dropIfExists('periode');
+           Schema::dropIfExists('periodes');
 
     }
 };

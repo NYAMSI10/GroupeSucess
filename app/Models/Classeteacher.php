@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Matiere extends Model
+class Classeteacher extends Model
 {
     use HasFactory;
-
-    protected $table = 'matieres';
+    protected $table = 'classe_user';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nom',
+        'classe_id',
+        'user_id',
 
     ];
 }
-

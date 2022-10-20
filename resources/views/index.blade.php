@@ -26,7 +26,7 @@
   <link href="{{asset('asset/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('asset/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
-  
+    <link href="{{asset('asset/css/style.css')}}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0

@@ -9,11 +9,17 @@ class Periode extends Model
 {
     use HasFactory;
 
-    protected $table = 'periode';
-    protected $primaryKey = 'idperiode';
+    protected $table = 'periodes';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'nom',
-        
+
     ];
+
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

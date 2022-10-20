@@ -15,13 +15,14 @@ class IsAdmin
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
+
     { if (auth()->user()) {
         return $next($request);
     }
-    return redirect('/')->withErrors([
+    return redirect('Connexion')->withErrors([
         'pass' => 'Vous devez vous connecter ',
     ]);
 
-       
+
     }
 }

@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('periode_teacher', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('nomteacher');
-            $table->string('nomperiode');
+        Schema::table('academics', function (Blueprint $table) {
+            $table->id();
+            $table->string('annee')->unique();
             $table->timestamps();
-
-         
-
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -31,7 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-           Schema::dropIfExists('periode_teacher');
+
+        Schema::dropIfExists('academics');
 
     }
 };

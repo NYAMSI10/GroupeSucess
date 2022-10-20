@@ -9,11 +9,11 @@ class Classe extends Model
 {
     use HasFactory;
 
-    protected $table = 'classe';
-    protected $primaryKey = 'idclasse';
+    protected $table = 'classes';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'nom',
-        
+
     ];
 }

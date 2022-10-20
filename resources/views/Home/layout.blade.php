@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   
+
     <title>GROUPE SUCCÈS +🎓🎓</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -45,14 +45,13 @@
                             <img alt="image" class="img-circle" src="{{asset('img/profile_small.jpg')}}" />
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->nom}}</strong>
                              </span> <span class="text-muted text-xs block">Admin <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="profile.html">Profile</a></li>
-                                <li><a href="contacts.html">Contacts</a></li>
-                                <li><a href="mailbox.html">Mailbox</a></li>
+
                                 <li class="divider"></li>
-                                <li><a href="login.html">Logout</a></li>
+                                <li><a href="{{route('user.logout')}}">Logout</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
@@ -63,7 +62,7 @@
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Tableau de bord</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li ><a href="index.html">Vue global</a></li>
-                            
+
                         </ul>
                     </li>
                     <li>
@@ -71,15 +70,15 @@
                     </li>
                     <li>
                         <a href="{{route('classe.index')}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Classes</span></a>
-                       
+
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">Enseignants </span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="{{route('teacher.index')}}"> Jours</a></li>
-                            <li><a href="mail_detail.html">Soirs</a></li>
-                            <li><a href="mail_compose.html">Vacances</a></li>
-                            <li><a href="email_template.html">Prepa-Concours</a></li>
+                            <li><a href="{{route('user.index')}}"> Jours</a></li>
+                            <li><a href="{{route('users.soir')}}">Soirs</a></li>
+                            <li><a href="{{route('users.vacance')}}">Vacances</a></li>
+                            <li><a href="{{route('users.concour')}}">Prepa-Concours</a></li>
                         </ul>
                     </li>
                     <li>
@@ -89,14 +88,14 @@
                         <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Liste des Insolvables</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Primes</span></span></a>
-                      
-                    </li>
-             
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Primes</span></a>
 
-           
-                
-                 
+                    </li>
+
+
+
+
+
                 </ul>
 
             </div>
@@ -228,18 +227,18 @@
 
         </nav>
         </div>
-                
-        
-                   
-                
+
+
+
+
             <div>
             @yield('content')
-                
-            </div>   
-                  
 
-           
-      
+            </div>
+
+
+
+
 
         </div>
         <div class="small-chat-box fadeInRight animated">
@@ -729,13 +728,13 @@
     <!-- jQuery UI -->
     <script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 
-   
+
     <!-- Sparkline -->
     <script src="{{asset('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
 
-   
 
-  
+
+
     <!-- Toastr -->
     <script src="{{asset('js/plugins/toastr/toastr.min.js')}}"></script>
 
@@ -759,7 +758,7 @@
             }, 1300);
 
 
-          
+
         });
     </script>
 </body>

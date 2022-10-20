@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Periode_teacher extends Model
+class Matiereteacher extends Model
 {
     use HasFactory;
-    protected $table = 'periode_teacher';
+
+    protected $table = 'matiere_user';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nomperiode',
-        'nomteacher',
-        
+        'matiere_id',
+        'user_id',
+
     ];
 }

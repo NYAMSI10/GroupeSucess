@@ -16,7 +16,7 @@
                                 <div class="form-group">
                                     <label class="form-label"> Noms et Prénoms </label>
                                     <input type="text" name="nom" class="form-control"
-                                           value="{{  old('nom') }}">
+                                           value="{{  $user->nom}}">
                                     @error('nom')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label class="form-label"> E-mail </label>
                                     <input type="email" name="email" class="form-control"
-                                           value="{{  old('email') }}">
+                                           value="{{   $user->email }}">
                                     @error('email')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
@@ -43,7 +43,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Quartier </label>
                                     <input type="text" name="quartier" class="form-control"
-                                           value="{{  old('quartier') }}">
+                                           value="{{   $user->quartier }}">
                                     @error('quartier')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label class="form-label"> Numéro de téléphone </label>
                                     <input type="phone" class="form-control" name="tel"
-                                           value="{{  old('tel') }}">
+                                           value="{{   $user->tel }}">
                                     @error('tel')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
@@ -70,18 +70,21 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label"> Selectionnez la(les) classe(s)</label>
+                                    @foreach(classeusers() as $classusers)
                                     @foreach(classes() as $class)
 
-                                        <div class="form-check" style="margin-left:2%">
+                                            @if(($class->id == $classusers->classe_id) && ($user->id == $classusers->user_id))
+                                                <div class="form-check" style="margin-left:2%">
 
-                                            <input class="form-check-input" type="checkbox" name="classe[]"
-                                                   value="{{ $class->id }}">
-                                            <label>
-                                                {{ $class->nom }}
+                                                    <input class="form-check-input" type="checkbox" name="classe[]"
+                                                           value="{{ $class->id }}" checked="true">
+                                                    <label>
+                                                        {{ $class->nom }}
 
-                                            </label>
-                                        </div>
-
+                                                    </label>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     @endforeach
 
 
@@ -98,13 +101,13 @@
                                         <div class="row">
                                             <div class="col-sm-6">
 
-                                            <input class="form-check-input" type="checkbox" name="matiere[]"
-                                                   value="{{ $mat->id }}">
-                                            <label>
-                                                {{ $mat->nom }}
+                                                <input class="form-check-input" type="checkbox" name="matiere[]"
+                                                       value="{{ $mat->id }}">
+                                                <label>
+                                                    {{ $mat->nom }}
 
-                                            </label>
-                                        </div>
+                                                </label>
+                                            </div>
                                         </div>
 
                                     @endforeach
@@ -151,14 +154,18 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label"> Role </label>
-                                    <select class="form-control" name="role" >
-                                        <option value="0"></option>
-                                        <option value="1">Administrateur</option>
-
+                                    <select class="form-control" name="role">
+                                        @if($user->role == 1)
+                                            <option value="1">Administrateur</option>
+                                            <option value="0"></option>
+                                        @else
+                                            <option value="0"></option>
+                                            <option value="1">Administrateur</option>
+                                        @endif
                                     </select>
                                     @error('service')
                                     <div class="alert alert-danger">
-                                        <span >{{ $message }}</span>
+                                        <span>{{ $message }}</span>
                                     </div>
                                     @enderror
                                 </div>
