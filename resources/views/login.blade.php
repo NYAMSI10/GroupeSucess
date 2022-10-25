@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PorjetRaissa </title>
+    <title>GROUPE SUCCÈS +🎓🎓</title>
     <!-- Favicons -->
     <link href="{{asset('asset/img/logo.jpg')}}" rel="icon">
     <link href="{{asset('asset/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
