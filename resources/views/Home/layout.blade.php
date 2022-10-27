@@ -17,6 +17,7 @@
 
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
     <!-- Toastr style -->
@@ -731,13 +732,18 @@
 
     <!-- Sparkline -->
     <script src="{{asset('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
 
 
     <!-- Toastr -->
     <script src="{{asset('js/plugins/toastr/toastr.min.js')}}"></script>
-
 @yield('script')
     <script>
         $(document).ready(function() {

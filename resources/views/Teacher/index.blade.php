@@ -70,19 +70,16 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label"> Selectionnez la(les) classe(s)</label>
-                                    @foreach(classes() as $class)
 
-                                        <div class="form-check" style="margin-left:2%">
 
-                                            <input class="form-check-input" type="checkbox" name="classe[]"
-                                                   value="{{ $class->id }}">
-                                            <label>
-                                                {{ $class->nom }}
 
-                                            </label>
-                                        </div>
+                                        <select class="select2 form-control" name="classe[]" multiple="multiple">
+                                            @foreach(classes() as $class)
+                                                <option value="{{ $class->id }}">{{$class->nom}}</option>
+                                            @endforeach
 
-                                    @endforeach
+                                        </select>
+
 
 
                                 </div>
@@ -93,21 +90,16 @@
                                 <div class="form-group">
                                     <label class="form-label"> Selectionnez le(les) Matiére(s) </label>
 
-                                    @foreach(matieres() as $mat)
 
-                                        <div class="row">
-                                            <div class="col-sm-6">
 
-                                            <input class="form-check-input" type="checkbox" name="matiere[]"
-                                                   value="{{ $mat->id }}">
-                                            <label>
-                                                {{ $mat->nom }}
 
-                                            </label>
-                                        </div>
-                                        </div>
+                                        <select class="select2 form-control" name="matiere[]" multiple="multiple">
+                                            @foreach(matieres() as $mat)
+                                                <option value="{{ $mat->id }}">{{$mat->nom}}</option>
+                                            @endforeach
 
-                                    @endforeach
+                                        </select>
+
 
 
                                 </div>
@@ -128,20 +120,12 @@
                                     <label class="form-label"> Selectionnez le(les) Période(s) de Cours </label>
 
 
-                                    @foreach(periodes() as $perio)
+                                    <select class="select2 form-control" name="periode[]" multiple="multiple">
+                                        @foreach(periodes() as $period)
+                                        <option value="{{ $period->id }}">{{$period->nom}}</option>
+                                        @endforeach
 
-                                        <div class="row">
-                                            <div class="col-sm-4">
-
-                                                <input class="form-check-input" type="checkbox" name="periode[]"
-                                                       value="{{$perio->id}}">
-                                                <label>
-                                                    {{ $perio->nom}}
-
-                                                </label>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                                    </select>
 
 
                                 </div>
