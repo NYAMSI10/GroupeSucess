@@ -18,7 +18,9 @@
             <a href="courses.html" class="btn-get-started">Get Started</a>
         </div>
     </section><!-- End Hero -->
-
+<div>
+    <p> bb</p>
+</div>
     <main id="main">
 
         <!-- ======= About Section ======= -->
