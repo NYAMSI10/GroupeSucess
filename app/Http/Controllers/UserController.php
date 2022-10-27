@@ -82,8 +82,8 @@ class UserController extends Controller
             [
                 'nom' => 'required',
                 'email' => 'required|unique:users',
-                'quartier' => 'required|unique:users',
-                'tel' => 'required',
+                'quartier' => 'required',
+                'tel' => 'required|unique:users',
 
 
             ],
@@ -159,7 +159,10 @@ class UserController extends Controller
     public function edit(user $user)
     {
          $classusers = Classeteacher::where('user_id', $user->id)->get();
-        return view('teacher.show', compact('user', compact('classusers')));//
+        $periodusers = Periodeteacher::where('user_id', $user->id)->get();
+        $matiereusers = Matiereteacher::where('user_id', $user->id)->get();
+
+        return view('teacher.show', compact('user', 'classusers','periodusers','matiereusers'));//
 
     }
 
@@ -170,9 +173,60 @@ class UserController extends Controller
      * @param  \App\Models\user  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user $teacher)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate(
+            [
+                'nom' => 'required',
+                'email' => 'required',
+                'quartier' => 'required',
+                'tel' => 'required',
+
+
+            ],
+        );
+
+        $user->update([
+
+            "nom"=> $request->nom,
+            "email"=> $request->email,
+            "quartier"=>$request->quartier,
+            "tel"=>$request->tel,
+            "is_admin"=>$request->role,
+        ]);
+
+        /* foreach ($request->periode as $period)
+       {
+             $idperiode = DB::table('periode_user')->where('id',$period)->value('periode_id');
+
+           $useperiode = DB::table('periode_user')->where('id',$period)->update([
+
+               "periode_id"=>$idperiode,
+               "user_id"=>$user->id,
+           ]);
+
+
+       }
+      /*
+
+   foreach ($request->classe as $classes)
+       {
+           classeteacher::create([
+               "classe_id"=>$classes,
+               "user_id"=>$user->id,
+           ]);
+       }
+
+       foreach ($request->matiere as $matieres)
+       {
+           matiereteacher::create([
+               "matiere_id"=>$matieres,
+               "user_id"=>$user->id,
+           ]);
+       } */
+
+        return redirect()->route('user.index')->with('sucess', 'les informations ont été modifies');
+
     }
 
     /**

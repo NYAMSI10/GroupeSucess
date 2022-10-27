@@ -9,8 +9,9 @@
             <div class="ibox float-e-margins">
 
                 <div class="ibox-content">
-                    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -70,23 +71,18 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label"> Selectionnez la(les) classe(s)</label>
-                                    @foreach(classeusers() as $classusers)
-                                    @foreach(classes() as $class)
 
-                                            @if(($class->id == $classusers->classe_id) && ($user->id == $classusers->user_id))
-                                                <div class="form-check" style="margin-left:2%">
+                                    <select class="select2 form-control" name="classe[]" multiple="multiple">
+                                        @foreach(classes() as $class)
+                                            @foreach($classusers as $classe)
 
-                                                    <input class="form-check-input" type="checkbox" name="classe[]"
-                                                           value="{{ $class->id }}" checked="true">
-                                                    <label>
-                                                        {{ $class->nom }}
+                                                @if($class->id == $classe->classe_id)
+                                                    <option  selected="selected"  value="{{ $classe->id }}">{{$class->nom}}</option>
 
-                                                    </label>
-                                                </div>
-                                            @endif
+                                                @endif
+                                            @endforeach
                                         @endforeach
-                                    @endforeach
-
+                                    </select>
 
                                 </div>
 
@@ -96,21 +92,17 @@
                                 <div class="form-group">
                                     <label class="form-label"> Selectionnez le(les) Matiére(s) </label>
 
-                                    @foreach(matieres() as $mat)
+                                    <select class="select2 form-control" name="matiere[]" multiple="multiple">
+                                        @foreach(matieres() as $mat)
+                                            @foreach($matiereusers as $matiere)
 
-                                        <div class="row">
-                                            <div class="col-sm-6">
+                                                @if($mat->id == $matiere->matiere_id)
+                                                    <option  selected="selected"  value="{{ $matiere->id }}">{{$mat->nom}}</option>
 
-                                                <input class="form-check-input" type="checkbox" name="matiere[]"
-                                                       value="{{ $mat->id }}">
-                                                <label>
-                                                    {{ $mat->nom }}
-
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endforeach
+                                    </select>
 
 
                                 </div>
@@ -130,21 +122,18 @@
                                     <input type="file" class="form-control" id="files" name="files[]" multiple> -->
                                     <label class="form-label"> Selectionnez le(les) Période(s) de Cours </label>
 
+                                    <select class="select2 form-control" name="periode[]" multiple="multiple">
+                                        @foreach(periodes() as $periode)
+                                        @foreach($periodusers as $period)
 
-                                    @foreach(periodes() as $perio)
+                                             @if($periode->id == $period->periode_id)
+                                            <option  selected="selected"  value="{{ $period->id }}">{{$periode->nom}}</option>
 
-                                        <div class="row">
-                                            <div class="col-sm-4">
+                                                @endif
+                                        @endforeach
+                                        @endforeach
+                                    </select>
 
-                                                <input class="form-check-input" type="checkbox" name="periode[]"
-                                                       value="{{$perio->id}}">
-                                                <label>
-                                                    {{ $perio->nom}}
-
-                                                </label>
-                                            </div>
-                                        </div>
-                                    @endforeach
 
 
                                 </div>
@@ -155,7 +144,7 @@
                                 <div class="form-group">
                                     <label class="form-label"> Role </label>
                                     <select class="form-control" name="role">
-                                        @if($user->role == 1)
+                                        @if($user->is_admin == 1)
                                             <option value="1">Administrateur</option>
                                             <option value="0"></option>
                                         @else
@@ -174,7 +163,7 @@
                         </div>
                         <br>
                         <div class="form-group" style="margin-right: 47%;">
-                            <button class="btn btn-md btn-primary pull-right" type="submit">Valider</button>
+                            <button class="btn btn-md btn-primary pull-right" type="submit">Modifier</button>
                         </div>
                     </form>
                 </div>
