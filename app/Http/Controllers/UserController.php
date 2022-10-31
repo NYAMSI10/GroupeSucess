@@ -23,38 +23,30 @@ class UserController extends Controller
     {
         //$user = user::orderBy('nom', 'asc')->get();
 
-        $periode = Periode::find(1)->users()->orderBy('nom','ASC')->get();
+        $periode = Periode::find(1)->users()->orderBy('nom', 'ASC')->get();
         return view('teacher.jour', compact('periode'));
-
-
     }
 
     public function soir()
     {
         //$user = user::orderBy('nom', 'asc')->get();
 
-        $periode = Periode::find(2)->users()->orderBy('nom','ASC')->get();
+        $periode = Periode::find(2)->users()->orderBy('nom', 'ASC')->get();
         return view('teacher.soir', compact('periode'));
-
-
     }
     public function vacance()
     {
         //$user = user::orderBy('nom', 'asc')->get();
 
-        $periode = Periode::find(3)->users()->orderBy('nom','ASC')->get();
+        $periode = Periode::find(3)->users()->orderBy('nom', 'ASC')->get();
         return view('teacher.vacance', compact('periode'));
-
-
     }
     public function concour()
     {
         //$user = user::orderBy('nom', 'asc')->get();
 
-        $periode = Periode::find(4)->users()->orderBy('nom','ASC')->get();
+        $periode = Periode::find(4)->users()->orderBy('nom', 'ASC')->get();
         return view('teacher.concour', compact('periode'));
-
-
     }
 
 
@@ -88,52 +80,46 @@ class UserController extends Controller
 
             ],
         );
-        function rand( $length )
+        function rand($length)
         {
 
             $chars = "ABCDEFGHI012345JKLMNOPQRSTUVWXYZ6789";
-            return substr(str_shuffle($chars),0,$length);
-
+            return substr(str_shuffle($chars), 0, $length);
         }
         $mot = rand(8);
         User::create([
 
-            "nom"=> $request->nom,
-            "email"=> $request->email,
-            "quartier"=>$request->quartier,
-            "tel"=>$request->tel,
-            "is_admin"=>$request->role,
-            "password"=>Hash::make($mot),
+            "nom" => $request->nom,
+            "email" => $request->email,
+            "quartier" => $request->quartier,
+            "tel" => $request->tel,
+            "is_admin" => $request->role,
+            "password" => Hash::make($mot),
         ]);
 
-        $iduser =\DB::table('users')->where('tel', $request->tel)->value('id');
+        $iduser = \DB::table('users')->where('tel', $request->tel)->value('id');
 
-        foreach ($request->periode as $period)
-            {
-                    Periodeteacher::create([
-                        "periode_id"=>$period,
-                        "user_id"=>$iduser,
-                    ]);
-
-            }
-        foreach ($request->classe as $classes)
-        {
+        foreach ($request->periode as $period) {
+            Periodeteacher::create([
+                "periode_id" => $period,
+                "user_id" => $iduser,
+            ]);
+        }
+        foreach ($request->classe as $classes) {
             classeteacher::create([
-                "classe_id"=>$classes,
-                "user_id"=>$iduser,
+                "classe_id" => $classes,
+                "user_id" => $iduser,
             ]);
         }
 
-        foreach ($request->matiere as $matieres)
-        {
+        foreach ($request->matiere as $matieres) {
             matiereteacher::create([
-                "matiere_id"=>$matieres,
-                "user_id"=>$iduser,
+                "matiere_id" => $matieres,
+                "user_id" => $iduser,
             ]);
         }
 
         return redirect()->route('user.index')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
-
     }
 
 
@@ -158,11 +144,17 @@ class UserController extends Controller
      */
     public function edit(user $user)
     {
-         $classusers = Classeteacher::where('user_id', $user->id)->get();
+        $classusers = Classeteacher::where('user_id', $user->id)->get();
         $periodusers = Periodeteacher::where('user_id', $user->id)->get();
+
+        $periodes = Periode::all();
+        //    $collection = collect([1,2,3,4]);
+
+
         $matiereusers = Matiereteacher::where('user_id', $user->id)->get();
 
-        return view('teacher.show', compact('user', 'classusers','periodusers','matiereusers'));//
+        return view('teacher.show', compact('user', 'periodusers', 'classusers', 'periodes', 'matiereusers')); //
+
 
     }
 
@@ -188,11 +180,11 @@ class UserController extends Controller
 
         $user->update([
 
-            "nom"=> $request->nom,
-            "email"=> $request->email,
-            "quartier"=>$request->quartier,
-            "tel"=>$request->tel,
-            "is_admin"=>$request->role,
+            "nom" => $request->nom,
+            "email" => $request->email,
+            "quartier" => $request->quartier,
+            "tel" => $request->tel,
+            "is_admin" => $request->role,
         ]);
 
         /* foreach ($request->periode as $period)
@@ -226,7 +218,6 @@ class UserController extends Controller
        } */
 
         return redirect()->route('user.index')->with('sucess', 'les informations ont été modifies');
-
     }
 
     /**
@@ -248,13 +239,12 @@ class UserController extends Controller
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard');        }
+            return redirect()->route('dashboard');
+        }
 
         return back()->withErrors([
             'pass' => 'Mot de passe ou email incorrect ',
         ]);
-
-
     }
 
     public function logout(Request $request)
