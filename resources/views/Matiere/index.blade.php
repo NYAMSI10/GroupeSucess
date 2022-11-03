@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Liste des Classes </h5>
+                    <h5>Liste des Matiéres </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -50,7 +50,7 @@
                                         <!-- <a class="btn btn-space btn-info btn-xs voir" ><i class="fa fa-1x fa-eye sr-icons"></i></a> -->
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=""><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
+                                           style="color:white;" href="{{ route('matiere.edit', $mat->id)}}"><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
                                         <form action="{{ route('matiere.destroy', $mat->id)}}" method="post"
                                               style="display: inline-block">

@@ -25,11 +25,11 @@ class ClasseController extends Controller
      */
     public function create(Request $req )
     {
-       
+
 
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -39,16 +39,22 @@ class ClasseController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'nom' => 'required',
 
+            ],
+        );
 
-        $classe = new Classe([
- 
+         Classe::created([
+
             'nom'=>$request->nom,
           ]);
 
 
-          $classe->save();
+
           return redirect()->route('classe.index')->with('sucess', 'Cette Classe a été crée');
+
     }
 
     /**
@@ -82,7 +88,20 @@ class ClasseController extends Controller
      */
     public function update(Request $request, Classe $classe)
     {
-        //
+        $request->validate(
+            [
+                'nom' => 'required',
+
+            ],
+        );
+        $classe->update([
+
+            'nom'=>$request->nom,
+        ]);
+
+
+        return redirect()->route('classe.index')->with('sucess', 'Cette Classe a été modfiée');
+
     }
 
     /**

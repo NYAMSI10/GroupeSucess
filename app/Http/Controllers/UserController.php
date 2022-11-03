@@ -34,6 +34,7 @@ class UserController extends Controller
         $periode = Periode::find(2)->users()->orderBy('nom', 'ASC')->get();
         return view('teacher.soir', compact('periode'));
     }
+
     public function vacance()
     {
         //$user = user::orderBy('nom', 'asc')->get();
@@ -41,6 +42,7 @@ class UserController extends Controller
         $periode = Periode::find(3)->users()->orderBy('nom', 'ASC')->get();
         return view('teacher.vacance', compact('periode'));
     }
+
     public function concour()
     {
         //$user = user::orderBy('nom', 'asc')->get();
@@ -48,7 +50,6 @@ class UserController extends Controller
         $periode = Periode::find(4)->users()->orderBy('nom', 'ASC')->get();
         return view('teacher.concour', compact('periode'));
     }
-
 
 
     /**
@@ -65,7 +66,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -86,6 +87,7 @@ class UserController extends Controller
             $chars = "ABCDEFGHI012345JKLMNOPQRSTUVWXYZ6789";
             return substr(str_shuffle($chars), 0, $length);
         }
+
         $mot = rand(8);
         User::create([
 
@@ -123,12 +125,10 @@ class UserController extends Controller
     }
 
 
-
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\user  $teacher
+     * @param \App\Models\user $teacher
      * @return \Illuminate\Http\Response
      */
     public function show(user $teacher)
@@ -139,21 +139,18 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\user  $teacher
+     * @param \App\Models\user $teacher
      * @return \Illuminate\Http\Response
      */
     public function edit(user $user)
     {
-        $classusers = Classeteacher::where('user_id', $user->id)->get();
-        $periodusers = Periodeteacher::where('user_id', $user->id)->get();
+
 
         $periodes = Periode::all();
         //    $collection = collect([1,2,3,4]);
 
 
-        $matiereusers = Matiereteacher::where('user_id', $user->id)->get();
-
-        return view('teacher.show', compact('user', 'periodusers', 'classusers', 'periodes', 'matiereusers')); //
+        return view('teacher.show', compact('periodes', 'user')); //
 
 
     }
@@ -161,8 +158,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\user  $teacher
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\user $teacher
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
@@ -173,7 +170,6 @@ class UserController extends Controller
                 'email' => 'required',
                 'quartier' => 'required',
                 'tel' => 'required',
-
 
             ],
         );
@@ -186,49 +182,49 @@ class UserController extends Controller
             "tel" => $request->tel,
             "is_admin" => $request->role,
         ]);
+        $deleperiod = DB::table('periode_user')->where('user_id', $user->id)->delete();
+        $deleclass = DB::table('classe_user')->where('user_id', $user->id)->delete();
+        $delematiere = DB::table('matiere_user')->where('user_id', $user->id)->delete();
 
-        /* foreach ($request->periode as $period)
-       {
-             $idperiode = DB::table('periode_user')->where('id',$period)->value('periode_id');
+        foreach ($request->periode as $period) {
+            Periodeteacher::create([
+                "periode_id" => $period,
+                "user_id" => $user->id,
+            ]);
+        }
+        foreach ($request->classe as $classes) {
+            classeteacher::create([
+                "classe_id" => $classes,
+                "user_id" => $user->id,
+            ]);
+        }
 
-           $useperiode = DB::table('periode_user')->where('id',$period)->update([
+        foreach ($request->matiere as $matieres) {
+            matiereteacher::create([
+                "matiere_id" => $matieres,
+                "user_id" => $user->id,
+            ]);
+        }
+        return redirect()->route('user.index')->with('sucess', 'les informations  ont été modifies ');
 
-               "periode_id"=>$idperiode,
-               "user_id"=>$user->id,
-           ]);
 
-
-       }
-      /*
-
-   foreach ($request->classe as $classes)
-       {
-           classeteacher::create([
-               "classe_id"=>$classes,
-               "user_id"=>$user->id,
-           ]);
-       }
-
-       foreach ($request->matiere as $matieres)
-       {
-           matiereteacher::create([
-               "matiere_id"=>$matieres,
-               "user_id"=>$user->id,
-           ]);
-       } */
-
-        return redirect()->route('user.index')->with('sucess', 'les informations ont été modifies');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\user  $teacher
+     * @param \App\Models\user $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user $teacher)
+    public function destroy(user $user)
     {
-        //
+        $deleperiod = DB::table('periode_user')->where('user_id', $user->id)->delete();
+        $deleclass = DB::table('classe_user')->where('user_id', $user->id)->delete();
+        $delematiere = DB::table('matiere_user')->where('user_id', $user->id)->delete();
+
+        $user->delete();
+        return redirect()->route('user.index')->with('sucess', 'les informations  ont été supprimées ');
+
     }
 
     public function login(Request $request)

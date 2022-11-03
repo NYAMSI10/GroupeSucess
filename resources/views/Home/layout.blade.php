@@ -83,7 +83,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Elève</span>  </a>
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">Elèves </span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="{{route('student.index')}}"> Jours</a></li>
+                            <li><a href="{{route('students.soir')}}">Soirs</a></li>
+                            <li><a href="{{route('students.vacance')}}">Vacances</a></li>
+                            <li><a href="{{route('students.concour')}}">Prepa-Concours</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Liste des Insolvables</span></a>

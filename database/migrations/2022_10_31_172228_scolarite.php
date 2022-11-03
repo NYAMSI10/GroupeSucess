@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('academics', function (Blueprint $table) {
+        Schema::create('scolarites', function (Blueprint $table) {
             $table->id();
-            $table->string('annee')->unique();
+            $table->string('frais');
+            $table->string('avance')->nullable();
+            $table->string('reste');
+            $table->string('mois');
+            $table->foreignId('student_id')->constrained();
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -26,8 +31,7 @@ return new class extends Migration
      */
     public function down()
     {
-
-        Schema::dropIfExists('academics');
+        Schema::dropIfExists('scolarites');
 
     }
 };

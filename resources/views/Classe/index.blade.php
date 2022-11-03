@@ -50,7 +50,7 @@
                                         <!-- <a class="btn btn-space btn-info btn-xs voir" ><i class="fa fa-1x fa-eye sr-icons"></i></a> -->
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=""><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
+                                           style="color:white;" href="{{ route('classe.show', $clas->id)}}"><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
                                         <form action="{{ route('classe.destroy', $clas->id)}}" method="post"
                                               style="display: inline-block">

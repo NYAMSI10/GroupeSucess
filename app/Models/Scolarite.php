@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classe extends Model
+class Scolarite extends Model
 {
     use HasFactory;
 
-    protected $table = 'classes';
+    protected $table = 'scolarites';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nom',
+        'mois','frais','avance','reste','student_id'
 
     ];
-      public  function  students()
-      {
-          return $this->hasMany(Student::class);
-      }
+
+    public function stuents()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

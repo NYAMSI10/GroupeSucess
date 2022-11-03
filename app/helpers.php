@@ -38,3 +38,24 @@ if (!function_exists('classeusers')) {
         return \App\Models\Classeteacher::all();
     }
 }
+if (!function_exists('annees')) {
+    function annees()
+    {
+
+        $mois=date("m");
+
+        if ($mois<8) { // avant Août
+            $fin=date("Y");
+            $debut=$fin-1;
+        }
+        else {
+            $debut=date("Y");
+            $fin=$debut+1;
+        }
+        $datev= $debut.'/'.$fin;
+
+        return $datev;
+
+
+    }
+}

@@ -9,14 +9,14 @@
             <div class="ibox float-e-margins">
 
                 <div class="ibox-content">
-                    <form action="{{ route('matiere.update', $matiere->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('classe.update', $classe->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-6" style="margin-left: 30%">
                                 <div class="form-group">
-                                    <label class="form-label " style="margin-left: 30%"> Noms de la matiere </label>
-                                    <input type="text" name="nom" class="form-control" value="{{  $matiere->nom}}">
+                                    <label class="form-label " style="margin-left: 30%"> Noms de la classe </label>
+                                    <input type="text" name="nom" class="form-control" value="{{  $classe->nom}}">
                                     @error('nom')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
@@ -27,7 +27,7 @@
 
 
                         </div>
-                        <br>
+ <br>
                         <div class="form-group" style="margin-right: 47%;">
                             <button class="btn btn-md btn-primary pull-right" type="submit">Modifier</button>
                         </div>

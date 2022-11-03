@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,8 +63,17 @@ Route::middleware('admin')->group(function () {
 
         });
 
+        Route::controller(StudentController::class)->name('students.')->group(function () {
+
+            Route::get('student/soir','soir')->name('soir');
+            Route::get('student/vacance','vacance')->name('vacance');
+            Route::get('student/prepa-concours','concour')->name('concour');
+
+        });
+
         Route::resource('matiere', MatiereController::class);
         Route::resource('user', UserController::class);
+        Route::resource('student', \App\Http\Controllers\StudentController::class);
 
     });
 });

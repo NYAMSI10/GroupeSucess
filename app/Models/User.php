@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function matieres()
     {
-        return $this->belongsTo(Matiere::class);
+        return $this->belongsToMany(Matiere::class);
 
     }
 
