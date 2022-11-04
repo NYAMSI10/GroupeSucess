@@ -62,11 +62,11 @@
                                     <td class="text-center">
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           href="{{ route('user.edit', $tea->id)}}"><i
+                                           style="color:white;" href="{{ route('user.edit', $tea->id)}}"><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
                                         <form action="{{ route('user.destroy', $tea->id)}}" method="post"
-                                             >
+                                              style="display: inline-block">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn-danger btn btn-xs"><i
@@ -95,36 +95,6 @@
 
     <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
 
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function () {
 
-            // update modal
-
-            var table = $('#datatable').DataTable();
-
-            table.on('click', '.voir', function () {
-
-
-                $tr = $(this).closest('tr');
-                if ($($tr).hasClass('child')) {
-                    $tr = $tr.prev('.parent');
-                }
-
-                var data = table.row($tr).data();
-                console.log(data);
-
-
-                $('#nom').val(data);
-
-
-                $('#viewform').attr('action', '/classe/' + data);
-                $('#update').modal('show');
-
-
-            });
-        });
-
-    </script>
 
 @endsection

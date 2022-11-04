@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classe;
 use App\Models\Periode;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -16,13 +17,13 @@ class StudentController extends Controller
     public function index()
     {
            //$students = Student::all();
-           $students = Periode::find(1)->students()->get();
+           $students = Periode::find(1)->students()->orderBy('nom', 'ASC')->get();
 
            return view('student/jour', compact('students'));
     }
     public function soir()
     {
-        $students = Periode::find(2)->students()->get();
+        $students = Periode::find(2)->students()->orderBy('nom', 'ASC')->get();
 
 
         return view('student/soir', compact('students'));
@@ -30,14 +31,14 @@ class StudentController extends Controller
 
     public function vacance()
     {
-        $students = Periode::find(3)->students()->get();
+        $students = Periode::find(3)->students()->orderBy('nom', 'ASC')->get();
 
         return view('student/vacance', compact('students'));
     }
 
     public function concour()
     {
-        $students = Periode::find(4)->students()->get();
+        $students = Periode::find(4)->students()->orderBy('nom', 'ASC')->get();
 
         return view('student/concour', compact('students'));
     }
@@ -83,8 +84,20 @@ class StudentController extends Controller
             "annee"=>annees(),
         ]);
 
+        if ($request->periode == 1 ){
+            return  redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
 
-        return  redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
+        }elseif($request->periode == 2 ){
+            return  redirect()->route('students.soir')->with('sucess', "l\' élève a été ajouté");
+
+        }elseif($request->periode == 3 ){
+            return  redirect()->route('students.vacance')->with('sucess', "l\' élève a été ajouté");
+
+        }elseif($request->periode == 4){
+            return  redirect()->route('students.concour')->with('sucess', "l\' élève a été ajouté");
+
+        }
+
 
 
     }
@@ -95,9 +108,8 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
     }
 
     /**
@@ -106,11 +118,16 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
-    }
+        $idclasses = Classe::find($student->classe_id);
+        $idperiodes = Periode::find($student->periode_id);
 
+
+        return  view('student.show',compact('student','idclasses','idperiodes'));
+
+
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -118,9 +135,46 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        $request->validate(
+            [
+                'nom' => 'required',
+                'inscription' => 'required',
+                'school' => 'required',
+                'quartier' => 'required',
+                'classe' => 'required',
+                'periode' => 'required',
+                'tel' => 'required|',
+            ],
+        );
+
+
+         $student->update([
+
+            "nom" => $request->nom,
+            "school" => $request->school,
+            "quartier" => $request->quartier,
+            "tel" => $request->tel,
+            "inscription" => $request->inscription,
+            "classe_id" => $request->classe,
+            "periode_id" => $request->periode,
+
+        ]);
+
+        if ($request->periode == 1 ){
+            return  redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
+
+        }elseif($request->periode == 2 ){
+            return  redirect()->route('students.soir')->with('sucess', "l\' élève a été ajouté");
+
+        }elseif($request->periode == 3 ){
+            return  redirect()->route('students.vacance')->with('sucess', "l\' élève a été ajouté");
+
+        }elseif($request->periode == 4){
+            return  redirect()->route('students.concour')->with('sucess', "l\' élève a été ajouté");
+
+        }
     }
 
     /**
@@ -129,8 +183,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return  redirect()->route('student.index')->with('sucess', "l\' élève a été supprimé ");
+
     }
+
+
+    /*
+     *    Controller pour les frais de cours des élèves
+     */
+
+
+
 }

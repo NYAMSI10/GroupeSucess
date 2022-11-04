@@ -53,7 +53,7 @@
                                     <td class="text-center">{{$student->nom }}</td>
                                     <td class="text-center">{{$student->quartier}}</td>
                                     <td class="text-center">{{$student->tel}}</td>
-                                    <td class="text-center">{{$student->classe_id}}</td>
+                                    <td class="text-center">{{ nomclas($student->classe_id) }}</td>
 
                                     <td class="text-center">
                                         <a class="btn btn-space btn-info btn-xs voir" href=""><i

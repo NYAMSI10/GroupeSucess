@@ -55,7 +55,15 @@ if (!function_exists('annees')) {
         $datev= $debut.'/'.$fin;
 
         return $datev;
+    }
+}
+if (!function_exists('nomclas')) {
+    function nomclas($a)
+    {
 
+         $clas = \App\Models\Classe::find($a);
+
+         return $clas->nom;
 
     }
 }

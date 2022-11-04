@@ -27,7 +27,7 @@
                 </div>
                 <div class="ibox-content">
                     <div class="">
-                        <a data-toggle="modal" data-target="#create"class="btn btn-primary ">
+                        <a href="{{route('student.create')}}" class="btn btn-primary ">
                             <i class="fa fa-plus"></i> Ajouter</a>
                     </div>
                     <br>
@@ -53,7 +53,7 @@
                                     <td class="text-center">{{$student->nom }}</td>
                                     <td class="text-center">{{$student->quartier}}</td>
                                     <td class="text-center">{{$student->tel}}</td>
-                                    <td class="text-center">{{$student->clas}}</td>
+                                    <td class="text-center">{{ nomclas($student->classe_id) }}</td>
 
                                     <td class="text-center">
                                         <a class="btn btn-space btn-info btn-xs voir" href=""><i
@@ -90,32 +90,7 @@
         </div>
     </div>
     <!-- create -->
-    <div class="modal inmodal" id="create" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated flipInY">
-                <form action="{{route('student.store')}}" method="POST">
-                    @csrf
-                    <div class="modal-body">
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label class="control-label" for="value">Nom de la matiere</label>
-                                    <input type="text" id="nom" class="form-control" name="nom"
-                                           value="{{ old('nom') }}" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                        <button type="button" class="btn btn-white" data-dismiss="modal"><i
-                                class="fa fa-times"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 @endsection
 

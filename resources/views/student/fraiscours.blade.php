@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Liste des Elèves du cours du Vacance </h5>
+                    <h5> Frais de l'élève <strong> {{$student->nom}}</strong> </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="ibox-content">
                     <div class="">
-                        <a href="{{route('student.create')}}" class="btn btn-primary ">
+                        <a href="" class="btn btn-primary ">
                             <i class="fa fa-plus"></i> Ajouter</a>
                     </div>
                     <br>
@@ -50,10 +50,10 @@
 
                             @foreach($students as $student)
                                 <tr>
-                                    <td class="text-center">{{$student->nom }}</td>
-                                    <td class="text-center">{{$student->quartier}}</td>
-                                    <td class="text-center">{{$student->tel}}</td>
-                                    <td class="text-center">{{ nomclas($student->classe_id) }}</td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
 
                                     <td class="text-center">
                                         <a class="btn btn-space btn-info btn-xs voir" href=""><i
@@ -63,10 +63,10 @@
                                     <td class="text-center">
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href="{{ route('student.edit', $student->id)}}"><i
+                                           style="color:white;" href=""><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
-                                        <form action="{{ route('student.destroy', $student->id)}}" method="post"
+                                        <form action="" method="post"
                                               style="display: inline-block">
                                             @csrf
                                             @method('DELETE')
@@ -99,36 +99,5 @@
 
     <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
 
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function () {
-
-            // update modal
-
-            var table = $('#datatable').DataTable();
-
-            table.on('click', '.voir', function () {
-
-
-                $tr = $(this).closest('tr');
-                if ($($tr).hasClass('child')) {
-                    $tr = $tr.prev('.parent');
-                }
-
-                var data = table.row($tr).data();
-                console.log(data);
-
-
-                $('#nom').val(data);
-
-
-                $('#viewform').attr('action', '/classe/' + data);
-                $('#update').modal('show');
-
-
-            });
-        });
-
-    </script>
 
 @endsection

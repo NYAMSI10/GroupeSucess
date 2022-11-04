@@ -120,8 +120,19 @@ class UserController extends Controller
                 "user_id" => $iduser,
             ]);
         }
+        if ($request->periode[0] == 1 ){
+            return redirect()->route('user.index')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
 
-        return redirect()->route('user.index')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+        }elseif($request->periode[0] == 2 ){
+            return redirect()->route('users.soir')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+
+        }elseif($request->periode[0]== 3 ){
+            return redirect()->route('users.vacance')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+
+        }elseif($request->periode[0] == 4){
+            return redirect()->route('users.concour')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+
+        }
     }
 
 
@@ -205,7 +216,19 @@ class UserController extends Controller
                 "user_id" => $user->id,
             ]);
         }
-        return redirect()->route('user.index')->with('sucess', 'les informations  ont été modifies ');
+        if ($request->periode[0] == 1 ){
+            return redirect()->route('user.index')->with('sucess', 'les informations  ont été modifies ');
+
+        }elseif($request->periode[0] == 2 ){
+            return redirect()->route('users.soir')->with('sucess', 'les informations  ont été modifies ');
+
+        }elseif($request->periode[0]== 3 ){
+            return redirect()->route('users.vacance')->with('sucess', 'les informations  ont été modifies ');
+
+        }elseif($request->periode[0] == 4){
+            return redirect()->route('users.concour')->with('sucess', 'les informations  ont été modifies ');
+
+        }
 
 
     }
