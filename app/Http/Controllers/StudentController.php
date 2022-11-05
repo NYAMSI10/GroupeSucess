@@ -195,6 +195,13 @@ class StudentController extends Controller
      *    Controller pour les frais de cours des élèves
      */
 
-
+       public function  frais( Student $student)
+       {
+            return view('student/fraiscours', compact('student'));
+       }
+    public function  paie( Student $student)
+    {
+        return view('student/paiecours', compact('student'));
+    }
 
 }

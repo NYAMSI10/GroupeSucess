@@ -56,7 +56,7 @@
                                     <td class="text-center">{{ nomclas($student->classe_id) }}</td>
 
                                     <td class="text-center">
-                                        <a class="btn btn-space btn-info btn-xs voir" href=""><i
+                                        <a class="btn btn-space btn-info btn-xs voir" href="{{ route('students.frais', $student->id)}}"><i
                                                 class="fa fa-1x fa-money sr-icons"></i></a>
 
                                     </td>

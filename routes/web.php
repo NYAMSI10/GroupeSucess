@@ -68,6 +68,9 @@ Route::middleware('admin')->group(function () {
             Route::get('student/soir','soir')->name('soir');
             Route::get('student/vacance','vacance')->name('vacance');
             Route::get('student/prepa-concours','concour')->name('concour');
+            Route::get('student/frais_de_cours/{student}','frais')->name('frais');
+            Route::get('student/Paiement/{student}','paie')->name('paie');
+
 
         });
 

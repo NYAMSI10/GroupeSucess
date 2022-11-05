@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title ">
-                    <h5>  FORMULAIRE D'INSCRIPTION DES ELEVES  </h5>
+                    <h5>  FORMULAIRE DE PAIEMENT DES COURS DE SOUTIENS  </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -81,14 +81,14 @@
 
 
 
-                                        <select class="select2 form-control" name="classe">
-                                            <option value=" ">Choisir une classe</option>
+                                    <select class="select2 form-control" name="classe">
+                                        <option value=" ">Choisir une classe</option>
 
                                         @foreach(classes() as $class)
-                                                <option value="{{ $class->id }}">{{$class->nom}}</option>
-                                            @endforeach
+                                            <option value="{{ $class->id }}">{{$class->nom}}</option>
+                                        @endforeach
 
-                                        </select>
+                                    </select>
                                     @error('classe')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
@@ -112,7 +112,7 @@
 
                                     <select class="select2 form-control" name="periode" >
                                         <option value=" ">Choisir une période de cours</option>
-                                    @foreach(periodes() as $period)
+                                        @foreach(periodes() as $period)
                                             <option value="{{ $period->id }}">{{$period->nom}}</option>
                                         @endforeach
 
