@@ -70,6 +70,7 @@ Route::middleware('admin')->group(function () {
             Route::get('student/prepa-concours','concour')->name('concour');
             Route::get('student/frais_de_cours/{student}','frais')->name('frais');
             Route::get('student/Paiement/{student}','paie')->name('paie');
+            Route::post('student/recu/{student}','recu')->name('recu');
 
 
         });

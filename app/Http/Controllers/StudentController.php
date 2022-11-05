@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classe;
 use App\Models\Periode;
+use App\Models\Scolarite;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -197,11 +198,39 @@ class StudentController extends Controller
 
        public function  frais( Student $student)
        {
-            return view('student/fraiscours', compact('student'));
+           $students = Student::find($student->id)->scolarites;
+           $classe = Classe::find($student->classe_id);
+
+
+           return view('student/fraiscours', compact('student','students', 'classe'));
        }
     public function  paie( Student $student)
     {
         return view('student/paiecours', compact('student'));
     }
+    public function  recu( Student $student, Request $request)
+    {
+        $request->validate(
+            [
+                'frais' => 'required',
+                'mois' => 'required',
 
+            ],
+        );
+                $reste = $request->frais - $request->avance ;
+
+                ;
+          Scolarite::create([
+              "student_id"=>$student->id,
+              "mois"=>$request->mois,
+              "frais"=>$request->frais,
+              "avance"=>$request->avance,
+              "reste"=>$reste,
+
+
+
+          ]);
+    return  redirect()->route('students.frais',$student->id)->with('sucess', "l\' élève a été supprimé ");
+
+    }
 }

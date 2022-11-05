@@ -38,6 +38,7 @@
                                 <th class="text-center">Date de paiement</th>
                                 <th class="text-center">Mois</th>
                                 <th class="text-center">Montant</th>
+                                <th class="text-center">Avance</th>
                                 <th class="text-center">Reste à payer</th>
                                 <th class="text-center">Classe</th>
                                 <th class="text-center">Opération</th>
@@ -48,23 +49,31 @@
 
                             <tbody>
 
-
+                        @foreach($students as $stud)
                                 <tr>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">{{$stud->created_at->format('d-m-Y \à H:i') }}</td>
+                                    <td class="text-center"> {{$stud->mois}}</td>
+                                    <td class="text-center"><strong>{{$stud->frais}} CFA</strong></td>
+                                    <td class="text-center"><strong>{{$stud->avance}} CFA</strong></td>
+                                    <td class="text-center">
+                                     @if($stud->reste != 0)
+                                        <strong style="color: red">{{$stud->reste}} CFA</strong>
+                                     @else
+                                         <strong class=" btn btn-space btn-primary btn-xs sr-icons "><i
+                                                 class="fa fa-1x fa-check sr-icons"></i></strong>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">{{$classe->nom}} CFA</td>
 
 
                                     <td class="text-center">
-
+                                        <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
+                                           style="color:white;" href=""><i
+                                                class="fa fa-1x fa-eye sr-icons"></i> </a>
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
                                            style="color:white;" href=""><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
-                                        <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=""><i
-                                                class="fa fa-1x fa-arrow-circle-down sr-icons"></i> </a>
+
 
 
 
@@ -74,7 +83,7 @@
 
                                 </tr>
 
-
+@endforeach
                             </tbody>
                         </table>
                     </div>
