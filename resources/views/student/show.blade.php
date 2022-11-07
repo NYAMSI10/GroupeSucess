@@ -76,7 +76,7 @@
 
                                 <select class="select2 form-control" name="classe">
 
-                                    <option value="{{ $idclasses->id }}">{{$idclasses->nom}}</option>
+                                    <option  value="{{ $idclasses->id }}">{{$idclasses->nom}}</option>
 
                                     @foreach(classes() as $class)
                                         @if($class->id != $idclasses->id )
@@ -113,7 +113,7 @@
 
                                     @foreach(periodes() as $period)
                                         @if($period->id != $idperiodes->id )
-                                            <option value="{{ $period->id }}">{{$period->nom}}</option>
+                                            <option  value="{{ $period->id }}">{{$period->nom}}</option>
                                         @endif
                                     @endforeach
 

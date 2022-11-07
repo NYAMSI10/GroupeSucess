@@ -63,15 +63,15 @@
                                                  class="fa fa-1x fa-check sr-icons"></i></strong>
                                         @endif
                                     </td>
-                                    <td class="text-center">{{$classe->nom}} CFA</td>
+                                    <td class="text-center">{{$classe->nom}} </td>
 
 
                                     <td class="text-center">
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=""><i
+                                           style="color:white;" href=" {{ route('students.showfrais',$stud->id)}}"><i
                                                 class="fa fa-1x fa-eye sr-icons"></i> </a>
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=""><i
+                                           style="color:white;" href=" {{ route('students.showfrais',$stud->id)}}"><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
 

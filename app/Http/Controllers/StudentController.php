@@ -7,6 +7,7 @@ use App\Models\Periode;
 use App\Models\Scolarite;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -17,11 +18,12 @@ class StudentController extends Controller
      */
     public function index()
     {
-           //$students = Student::all();
-           $students = Periode::find(1)->students()->orderBy('nom', 'ASC')->get();
+        //$students = Student::all();
+        $students = Periode::find(1)->students()->orderBy('nom', 'ASC')->get();
 
-           return view('student/jour', compact('students'));
+        return view('student/jour', compact('students'));
     }
+
     public function soir()
     {
         $students = Periode::find(2)->students()->orderBy('nom', 'ASC')->get();
@@ -43,6 +45,7 @@ class StudentController extends Controller
 
         return view('student/concour', compact('students'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,27 +53,28 @@ class StudentController extends Controller
      */
     public function create()
     {
-         return  view('student.index');
+        return view('student.index');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,)
-    {       $request->validate(
-        [
-            'nom' => 'required',
-            'inscription' => 'required',
-            'school' => 'required',
-            'quartier' => 'required',
-            'classe' => 'required',
-            'periode' => 'required',
-            'tel' => 'required|unique:students',
-        ],
-    );
+    {
+        $request->validate(
+            [
+                'nom' => 'required',
+                'inscription' => 'required',
+                'school' => 'required',
+                'quartier' => 'required',
+                'classe' => 'required',
+                'periode' => 'required',
+                'tel' => 'required|unique:students',
+            ],
+        );
 
 
         Student::create([
@@ -82,23 +86,22 @@ class StudentController extends Controller
             "inscription" => $request->inscription,
             "classe_id" => $request->classe,
             "periode_id" => $request->periode,
-            "annee"=>annees(),
+            "annee" => annees(),
         ]);
 
-        if ($request->periode == 1 ){
-            return  redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
+        if ($request->periode == 1) {
+            return redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
 
-        }elseif($request->periode == 2 ){
-            return  redirect()->route('students.soir')->with('sucess', "l\' élève a été ajouté");
+        } elseif ($request->periode == 2) {
+            return redirect()->route('students.soir')->with('sucess', "l\' élève a été ajouté");
 
-        }elseif($request->periode == 3 ){
-            return  redirect()->route('students.vacance')->with('sucess', "l\' élève a été ajouté");
+        } elseif ($request->periode == 3) {
+            return redirect()->route('students.vacance')->with('sucess', "l\' élève a été ajouté");
 
-        }elseif($request->periode == 4){
-            return  redirect()->route('students.concour')->with('sucess', "l\' élève a été ajouté");
+        } elseif ($request->periode == 4) {
+            return redirect()->route('students.concour')->with('sucess', "l\' élève a été ajouté");
 
         }
-
 
 
     }
@@ -106,7 +109,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show()
@@ -116,7 +119,7 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Student $student)
@@ -125,15 +128,16 @@ class StudentController extends Controller
         $idperiodes = Periode::find($student->periode_id);
 
 
-        return  view('student.show',compact('student','idclasses','idperiodes'));
+        return view('student.show', compact('student', 'idclasses', 'idperiodes'));
 
 
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Student $student)
@@ -151,7 +155,7 @@ class StudentController extends Controller
         );
 
 
-         $student->update([
+        $student->update([
 
             "nom" => $request->nom,
             "school" => $request->school,
@@ -163,17 +167,17 @@ class StudentController extends Controller
 
         ]);
 
-        if ($request->periode == 1 ){
-            return  redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
+        if ($request->periode == 1) {
+            return redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
 
-        }elseif($request->periode == 2 ){
-            return  redirect()->route('students.soir')->with('sucess', "l\' élève a été ajouté");
+        } elseif ($request->periode == 2) {
+            return redirect()->route('students.soir')->with('sucess', "l\' élève a été ajouté");
 
-        }elseif($request->periode == 3 ){
-            return  redirect()->route('students.vacance')->with('sucess', "l\' élève a été ajouté");
+        } elseif ($request->periode == 3) {
+            return redirect()->route('students.vacance')->with('sucess', "l\' élève a été ajouté");
 
-        }elseif($request->periode == 4){
-            return  redirect()->route('students.concour')->with('sucess', "l\' élève a été ajouté");
+        } elseif ($request->periode == 4) {
+            return redirect()->route('students.concour')->with('sucess', "l\' élève a été ajouté");
 
         }
     }
@@ -181,13 +185,13 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Student $student)
     {
         $student->delete();
-        return  redirect()->route('student.index')->with('sucess', "l\' élève a été supprimé ");
+        return redirect()->route('student.index')->with('sucess', "l\' élève a été supprimé ");
 
     }
 
@@ -196,41 +200,75 @@ class StudentController extends Controller
      *    Controller pour les frais de cours des élèves
      */
 
-       public function  frais( Student $student)
-       {
-           $students = Student::find($student->id)->scolarites;
-           $classe = Classe::find($student->classe_id);
+    public function frais(Student $student)
+    {
+        $students = Student::find($student->id)->scolarites;
+        $classe = Classe::find($student->classe_id);
 
 
-           return view('student/fraiscours', compact('student','students', 'classe'));
-       }
-    public function  paie( Student $student)
+        return view('student/fraiscours', compact('student', 'students', 'classe'));
+    }
+
+    public function paie(Student $student)
     {
         return view('student/paiecours', compact('student'));
     }
-    public function  recu( Student $student, Request $request)
+
+    public function recu(Student $student, Request $request)
     {
         $request->validate(
             [
                 'frais' => 'required',
                 'mois' => 'required',
+                'avance' => 'required',
 
             ],
         );
-                $reste = $request->frais - $request->avance ;
 
-                ;
-          Scolarite::create([
-              "student_id"=>$student->id,
-              "mois"=>$request->mois,
-              "frais"=>$request->frais,
-              "avance"=>$request->avance,
-              "reste"=>$reste,
+        $reste = $request->frais - $request->avance;
+
+        Scolarite::create([
+            "student_id" => $student->id,
+            "mois" => $request->mois,
+            "frais" => $request->frais,
+            "avance" => $request->avance,
+            "reste" => $reste,
 
 
+        ]);
 
-          ]);
-    return  redirect()->route('students.frais',$student->id)->with('sucess', "l\' élève a été supprimé ");
+        return redirect()->route('students.frais', $student->id)->with('sucess', "le paiement a été ajouter avec sucess");
+
+    }
+    public  function showfrais(Scolarite $school)
+    {
+
+
+          $student = Student::find($school->student_id);
+
+         return view('student/showfrais', compact('school','student'));
+
+    }
+
+    public  function updatefrais(Scolarite $school, Request $request)
+    {
+
+         $idstudent = DB::table('scolarites')->where('id', $school->id)->value('student_id');
+
+        $reste = $request->frais - $request->avance;
+
+        $school->update([
+
+            "mois" => $request->mois,
+            "frais" => $request->frais,
+            "avance" => $request->avance,
+            "reste" => $reste,
+
+
+        ]);
+
+        return redirect()->route('students.frais', $idstudent)->with('sucess', "les informations du  paiement a été modifieés avec sucess ");
+
 
     }
 }

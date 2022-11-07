@@ -46,7 +46,7 @@ class ClasseController extends Controller
             ],
         );
 
-         Classe::created([
+         Classe::create([
 
             'nom'=>$request->nom,
           ]);

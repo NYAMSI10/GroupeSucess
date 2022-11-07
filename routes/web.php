@@ -71,6 +71,9 @@ Route::middleware('admin')->group(function () {
             Route::get('student/frais_de_cours/{student}','frais')->name('frais');
             Route::get('student/Paiement/{student}','paie')->name('paie');
             Route::post('student/recu/{student}','recu')->name('recu');
+            Route::get('student/show_frais/{school}','showfrais')->name('showfrais');
+            Route::post('student/update_frais/{school}','updatefrais')->name('updatefrais');
+
 
 
         });

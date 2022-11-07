@@ -65,5 +65,18 @@ if (!function_exists('nomclas')) {
 
          return $clas->nom;
 
-    }
+    }}
+
+    if (!function_exists('moise')) {
+        function moise()
+        {
+
+            $collect =['JANVIER'.date("Y"),
+                'FEVRIER'.date("Y"), 'MARS'.date("Y"),'AVRIL'.date("Y"), 'MAI'.date("Y"),
+                'JUIN'.date("Y"),'JUILLET'.date("Y"),'AOUT'.date("Y"),'SEPTEMBRE'.date("Y"),'OCTOBRE'.date("Y"),
+                'NOVEMBRE'.date("Y"),'DECEMBRE'.date("Y"), ];
+
+            return $collect;
+
+        }
 }
