@@ -55,8 +55,8 @@
                                     <td class="text-center">{{$tea->quartier}}</td>
                                     <td class="text-center">{{$tea->tel}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-space btn-info btn-xs voir" href=""><i
-                                                class="fa fa-1x fa-money sr-icons"></i></a>
+                                        <a class="btn btn-space btn-info btn-xs voir" href="{{ route('salaires.salaire', $tea->id)}}"><i
+                                                class="fa fa-1x fa-money sr-icons" ></i></a>
 
                                     </td>
                                     <td class="text-center">

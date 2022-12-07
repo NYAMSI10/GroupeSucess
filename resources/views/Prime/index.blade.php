@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Liste des Classes </h5>
+                    <h5>Liste Des Primes </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -36,23 +36,23 @@
                             <thead>
                             <tr>
                                 <th class="text-center">Date</th>
-                                <th class="text-center">Nom</th>
+                                <th class="text-center">Nom de la primes</th>
                                 <th class="text-center">Opération</th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($classe as $clas)
+                            @foreach($primes as $prime)
                                 <tr>
-                                    <td class="text-center">{{$clas->created_at->format('d-m-Y \à H:i') }}</td>
-                                    <td class="text-center">{{$clas->nom}}</td>
+                                    <td class="text-center">{{$prime->created_at->format('d-m-Y \à H:i') }}</td>
+                                    <td class="text-center">{{$prime->nom}}</td>
                                     <td class="text-center">
                                         <!-- <a class="btn btn-space btn-info btn-xs voir" ><i class="fa fa-1x fa-eye sr-icons"></i></a> -->
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href="{{ route('classe.show', $clas->id)}}"><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
+                                           style="color:white;" href="{{ route('primes.show', $prime->id)}}"><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
-                                        <form action="{{ route('classe.destroy', $clas->id)}}" method="post"
+                                        <form action="{{ route('primes.destroy', $prime->id)}}" method="post"
                                               style="display: inline-block">
                                             @csrf
                                             @method('DELETE')
@@ -78,14 +78,14 @@
     <div class="modal inmodal" id="create" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content animated flipInY">
-                <form action="{{route('classe.store')}}" method="POST">
+                <form action="{{route('primes.store')}}" method="POST">
                     @csrf
                     <div class="modal-body">
 
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="control-label" for="value">Nom de la classe</label>
+                                    <label class="control-label" for="value">Nom de la prime</label>
                                     <input type="text" id="nom" class="form-control" name="nom"
                                            value="{{ old('nom') }}" required>
                                 </div>
@@ -102,36 +102,8 @@
         </div>
     </div>
 
-    <!-- update -->
-    <div class="modal inmodal" id="update" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated flipInY">
-                <form action="/classe" method="POST" id="viewform">
-                    @csrf
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label class="control-label" for="value">Nom de la classe</label>
-                                    <input type="text" name="nom" id="nom" class="form-control"
-                                    >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                        <button type="button" class="btn btn-white" data-dismiss="modal"><i
-                                class="fa fa-times"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 @endsection
-
 @section('script')
 
     <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
@@ -169,4 +141,5 @@
     </script>
 
 @endsection
+
 

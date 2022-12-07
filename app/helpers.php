@@ -80,3 +80,13 @@ if (!function_exists('nomclas')) {
 
         }
 }
+
+if (!function_exists('nomperiode')) {
+    function nomperiode($a)
+    {
+
+        $nomperiod = \App\Models\Periode::find($a);
+
+        return $nomperiod->nom;
+
+    }}

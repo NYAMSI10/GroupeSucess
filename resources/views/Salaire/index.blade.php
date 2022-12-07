@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5> Frais de cours de(du)  {{nomperiode($student->periode_id)}}</strong> de l'élève <strong> {{$student->nom}}</strong> </h5>
+                    <h5> Salaire de l'enseignant <strong> {{$user->nom}}</strong> </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -27,8 +27,8 @@
                 </div>
                 <div class="ibox-content">
                     <div class="">
-                        <a href="{{route('students.paie', $student->id)}}" class="btn btn-primary ">
-                            <i class="fa fa-plus"></i> Ajouter un paiement</a>
+                        <a href="{{route('salaires.paie', $user->id)}}" class="btn btn-primary ">
+                            <i class="fa fa-plus"></i> Paiement du salaire</a>
                     </div>
                     <br>
                     <div class="table-responsive">
@@ -38,9 +38,7 @@
                                 <th class="text-center">Date de paiement</th>
                                 <th class="text-center">Mois</th>
                                 <th class="text-center">Montant</th>
-                                <th class="text-center">Avance</th>
-                                <th class="text-center"> Statut ou Reste du paiement</th>
-                                <th class="text-center">Classe</th>
+                                <th class="text-center">Période de cours </th>
                                 <th class="text-center">Opération</th>
 
 
@@ -49,31 +47,29 @@
 
                             <tbody>
 
-                        @foreach($students as $stud)
+
                                 <tr>
-                                    <td class="text-center">{{$stud->created_at->format('d-m-Y \à H:i') }}</td>
-                                    <td class="text-center"> {{$stud->mois}}</td>
-                                    <td class="text-center"><strong>{{$stud->frais}} CFA</strong></td>
-                                    <td class="text-center"><strong>{{$stud->avance}} CFA</strong></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"> </td>
+
                                     <td class="text-center">
-                                     @if($stud->reste != 0)
-                                        <strong style="color: red">{{$stud->reste}} CFA</strong>
-                                     @else
+
+
                                          <strong class=" btn btn-space btn-primary btn-xs sr-icons "><i
                                                  class="fa fa-1x fa-check sr-icons"></i></strong>
-                                        @endif
+
                                     </td>
-                                    <td class="text-center">{{$classe->nom}} </td>
+                                    <td class="text-center"></td>
 
 
                                     <td class="text-center">
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=" {{ route('students.showfrais',$stud->id)}}"><i
+                                           style="color:white;" href=" "><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           onclick="return('Voulez-vous vraiment supprimer ce paiement?')" href=" {{ route('students.deletefrais',$stud->id)}}" ><i
+                                           onclick="return('Voulez-vous vraiment supprimer ce paiement?')" href=" " ><i
                                                 class="fa fa-1x fa-trash sr-icons"></i> </a>
 
 
@@ -83,7 +79,6 @@
 
                                 </tr>
 
-@endforeach
                             </tbody>
                         </table>
                     </div>

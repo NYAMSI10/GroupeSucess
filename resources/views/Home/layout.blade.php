@@ -95,7 +95,7 @@
                         <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Liste des Insolvables</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Primes</span></a>
+                        <a href="{{route('primes.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Primes</span></a>
 
                     </li>
 

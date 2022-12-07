@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prime;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ScolariteController extends Controller
+class SalaireController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -34,7 +38,7 @@ class ScolariteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -80,5 +84,40 @@ class ScolariteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function salaire(User $user)
+    {
+        return view(
+            'salaire/index',
+          compact('user')
+        );
+    }
+
+    public function paie(User $user)
+    {
+        $perio = DB::table('periode_user')->where('user_id',$user->id)->get();
+        $prime = Prime::all();
+
+        return view(
+            'salaire/paiesalaire',
+            compact('user','perio','prime')
+        );
+    }
+
+    public function addsalaire(User $user, Request $request)
+    {
+         $request->validate(
+             [
+
+                 'periode' => 'required',
+                 'mtfrais' => 'required',
+                 'nbrework' => 'required',
+                 'montant' => 'required',
+                 'mois' => 'required',
+                 'amical' => 'required',
+
+             ]
+         );
     }
 }

@@ -55,4 +55,10 @@ class User extends Authenticatable
 
         return $this->belongsToMany(Periode::class);
     }
+
+    public function primes()
+    {
+        return $this->belongsToMany(Prime::class);
+
+    }
 }

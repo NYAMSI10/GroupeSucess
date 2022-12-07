@@ -73,6 +73,21 @@ Route::middleware('admin')->group(function () {
             Route::post('student/recu/{student}','recu')->name('recu');
             Route::get('student/show_frais/{school}','showfrais')->name('showfrais');
             Route::post('student/update_frais/{school}','updatefrais')->name('updatefrais');
+            Route::get('student/Delete_frais/{school}','deletefrais')->name('deletefrais');
+
+            //Route::get('student/Reçu_frais/{school}','recufrais')->name('recufrais');
+
+
+
+        });
+
+        Route::controller(\App\Http\Controllers\SalaireController::class)->name('salaires.')->group(function () {
+
+            Route::get('Teacher/salaire/{user}','salaire')->name('salaire');
+            Route::get('Teacher/Paiement/{user}','paie')->name('paie');
+            Route::post('Teacher/Add/{user}','addsalaire')->name('addsalaire');
+
+            //Route::get('student/Reçu_frais/{school}','recufrais')->name('recufrais');
 
 
 
@@ -81,6 +96,7 @@ Route::middleware('admin')->group(function () {
         Route::resource('matiere', MatiereController::class);
         Route::resource('user', UserController::class);
         Route::resource('student', \App\Http\Controllers\StudentController::class);
-
+        Route::resource('primes', \App\Http\Controllers\PrimeController::class);
+        Route::resource('salaire', \App\Http\Controllers\SalaireController::class);
     });
 });

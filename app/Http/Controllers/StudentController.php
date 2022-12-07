@@ -216,6 +216,7 @@ class StudentController extends Controller
 
     public function recu(Student $student, Request $request)
     {
+
         $request->validate(
             [
                 'frais' => 'required',
@@ -269,6 +270,15 @@ class StudentController extends Controller
 
         return redirect()->route('students.frais', $idstudent)->with('sucess', "les informations du  paiement a été modifieés avec sucess ");
 
+
+    }
+    public  function deletefrais(Scolarite $school)
+    {
+
+
+       $school->delete();
+
+        return redirect()->route('students.frais', $school->student_id)->with('sucess', "Ce paiement a été supprimé avec sucess");
 
     }
 }
