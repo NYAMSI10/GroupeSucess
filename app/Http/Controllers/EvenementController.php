@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prime;
+use App\Models\Evenement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PrimeController extends Controller
+class EvenementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class PrimeController extends Controller
      */
     public function index()
     {
-          $primes = Prime::orderBy('nom', 'asc')->get();
+        $events = Evenement::all();
 
-        return view('Prime.index' , compact('primes'));
+        return  view('Evenement.index', compact('events'));
     }
 
     /**
@@ -37,18 +38,21 @@ class PrimeController extends Controller
      */
     public function store(Request $request)
     {
-              $request->validate([
+        $request->validate([
 
-                  'nom'=>'required|unique:primes'
+            'nom'=>'required|unique:primes'
 
-              ]);
+        ]);
 
-              Prime::create([
+        Evenement::create([
 
-                   'nom'=>$request->nom ,
-              ]);
+            'nom'=>$request->nom ,
+            'montant'=>$request->montant ,
+            'status'=>"ongoing",
 
-              return redirect()->route('primes.index')->with('sucess', 'Cette prime a été crée ');
+        ]);
+
+        return redirect()->route('evenements.index')->with('sucess', 'Cet evénèment a été crée ');
 
     }
 
@@ -58,9 +62,9 @@ class PrimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Prime $prime)
+    public function show($id)
     {
-         return view('Prime/show', compact('prime'));
+        //
     }
 
     /**
@@ -81,13 +85,9 @@ class PrimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prime $prime)
+    public function update(Request $request, $id)
     {
-                 $prime->update([
-                     'nom'=>$request->nom ,
-                 ]);
-        return redirect()->route('primes.index')->with('sucess', 'Cette prime a été modifiée ');
-
+        //
     }
 
     /**
@@ -96,10 +96,11 @@ class PrimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prime $prime)
+    public function destroy( $id)
     {
-       $prime->delete();
-        return redirect()->route('primes.index')->with('sucess', 'Cette prime a été supprimée ');
+      $event = DB::table('evenements')->where('id', $id)->delete();
+        return redirect()->route('evenements.index')->with('sucess', 'Cet evénèment a été supprimé');
+
 
     }
 }

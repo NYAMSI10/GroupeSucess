@@ -36,7 +36,9 @@
                             <thead>
                             <tr>
                                 <th class="text-center">Date de paiement</th>
-                                <th class="text-center">Mois</th>
+                                <th class="text-center">Mois du payement</th>
+                                <th class="text-center">Nombre de scéance ou d'Heure éffectuée</th>
+                                <th class="text-center">Montant par scéance ou par heure </th>
                                 <th class="text-center">Montant</th>
                                 <th class="text-center">Période de cours </th>
                                 <th class="text-center">Opération</th>
@@ -47,19 +49,24 @@
 
                             <tbody>
 
+                             @foreach($salaires as $salaire)
+
+
 
                                 <tr>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"> </td>
+                                    <td class="text-center"> {{$salaire->created_at->format('d-m-Y \à H:i') }}</td>
+                                    <td class="text-center">{{$salaire->mois}} </td>
 
                                     <td class="text-center">
-
-
-                                         <strong class=" btn btn-space btn-primary btn-xs sr-icons "><i
-                                                 class="fa fa-1x fa-check sr-icons"></i></strong>
-
+                                        {{$salaire->nbrework}}
                                     </td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        {{$salaire->mtfrais}}
+                                    </td>
+                                    <td class="text-center">
+                                       <strong>   {{$salaire->montant}} CFA</strong>
+                                    </td>
+                                    <td class="text-center"> {{$salaire->periode}}</td>
 
 
                                     <td class="text-center">
@@ -78,7 +85,7 @@
 
 
                                 </tr>
-
+                             @endforeach
                             </tbody>
                         </table>
                     </div>

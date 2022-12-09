@@ -38,20 +38,15 @@
                                             @foreach(periodes() as $periode)
                                                 @if($period->periode_id == $periode->id)
 
-                                                    <option value=" ">{{$periode->nom}}</option>
+                                                    <option >{{$periode->nom}}</option>
 
                                                 @endif
                                             @endforeach
                                         @endforeach
 
-
-
-
-
                                     </select>
 
-
-                                    @error('amicale')
+                                    @error('periode')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
                                     </div>
@@ -66,11 +61,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Montant par scéance ou par heure </label>
-                                    <input type="text" class="form-control" name="frais"
-                                           value="{{  old('frais') }}">
+                                    <label class="form-label">Nombre de scéance ou d'Heure éffectuée </label>
+                                    <input type="text" class="form-control" name="nbrework"
+                                           value="{{  old('nbrework') }}">
+
                                 </div>
-                                @error('amicale')
+                                @error('Nombresceance')
                                 <div class="alert alert-danger">
                                     <span>{{ $message }}</span>
                                 </div>
@@ -78,17 +74,17 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Nombre de scéance ou d'Heure éffectuée </label>
-                                    <input type="text" class="form-control" name="frais"
-                                           value="{{  old('frais') }}">
-
+                                    <label class="form-label">Montant par scéance ou par heure </label>
+                                    <input type="text" class="form-control" name="mtfrais"
+                                           value="{{  old('mtfrais') }}">
                                 </div>
-                                @error('amicale')
+                                @error('Montantsceance')
                                 <div class="alert alert-danger">
                                     <span>{{ $message }}</span>
                                 </div>
                                 @enderror
                             </div>
+
                         </div>
 
                         <div class="row">
@@ -96,7 +92,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Mois de paiement </label>
                                     <select class="select2 form-control" name="mois" >
-                                        <option value=" ">Choisir une période de cours</option>
+                                        <option value=" ">Choisir le mois de paiement</option>
                                         <option >JANVIER {{date("Y")}}</option>
                                         <option >FEVRIER {{date("Y")}}</option>
                                         <option>MARS {{date("Y")}}</option>
@@ -113,7 +109,7 @@
 
 
                                     </select>
-                                    @error('mois')
+                                    @error('Mois ')
                                     <div class="alert alert-danger">
                                         <span>{{ $message }}</span>
                                     </div>
@@ -133,6 +129,24 @@
                                 </div>
                                 @enderror
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Montant du Bénéficiaire de la cotisation </label>
+                                    <input type="text" class="form-control" name="benefcotistion"
+                                           value="{{  old('benefcotistion') }}">
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Montant à cotiser </label>
+                                    <input type="text" class="form-control" name="cotisation"
+                                           value="{{  old('cotisation') }}">
+
+                                </div>
+
+                            </div>
 
                         </div>
                         <fieldset>
@@ -144,14 +158,39 @@
                                     <div class="form-group">
                                         <label class="form-label">{{$primes->nom}} </label>
                                         <input type="text" class="form-control" name="prime[]"
-                                        >
+                                                >
 
                                     </div>
                                 </div>
                             @endforeach
+                                @foreach($prime as $primese)
+
+                                            <input type="hidden" class="form-control" name="primes[]"
+                                            value="{{$primese->id}}">
+
+
+                                @endforeach
 
                         </div>
                 </fieldset>
+
+                        <fieldset>
+                            <legend><h3 class="ibox-title">Les Evénements  </h3></legend>
+                            <div class="row">
+
+                                @foreach($events as $event)
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">{{$event->nom}} </label>
+                                            <input type="text" class="form-control" name="events[]"
+                                            value="{{$event->montant}}" >
+
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </fieldset>
                         <br>
                         <div class="form-group" style="margin-right: 47%;">
                             <button class="btn btn-md btn-primary pull-right" type="submit">Valider</button>

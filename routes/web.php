@@ -98,5 +98,6 @@ Route::middleware('admin')->group(function () {
         Route::resource('student', \App\Http\Controllers\StudentController::class);
         Route::resource('primes', \App\Http\Controllers\PrimeController::class);
         Route::resource('salaire', \App\Http\Controllers\SalaireController::class);
+        Route::resource('evenements', \App\Http\Controllers\EvenementController::class);
     });
 });

@@ -98,7 +98,10 @@
                         <a href="{{route('primes.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Primes</span></a>
 
                     </li>
+                    <li>
+                        <a href="{{route('evenements.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Evénèmentts </span></a>
 
+                    </li>
 
 
 

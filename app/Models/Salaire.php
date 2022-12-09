@@ -19,7 +19,9 @@ class Salaire extends Model
         'nbrework',
         'montant',
         'mois',
-        'amical'
+        'amical',
+        'cotisation',
+        'benefcotisation'
 
     ];
 }

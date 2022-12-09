@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evenement;
 use App\Models\Prime;
+use App\Models\Prime_user;
+use App\Models\Salaire;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -88,9 +91,11 @@ class SalaireController extends Controller
 
     public function salaire(User $user)
     {
+         $salaires = Salaire::where('user_id',$user->id)->orderBy('mois', 'ASC')->get();
+
         return view(
             'salaire/index',
-          compact('user')
+          compact('user','salaires')
         );
     }
 
@@ -98,26 +103,69 @@ class SalaireController extends Controller
     {
         $perio = DB::table('periode_user')->where('user_id',$user->id)->get();
         $prime = Prime::all();
+        $events = Evenement::where('status', 'ongoing')->get();
 
         return view(
             'salaire/paiesalaire',
-            compact('user','perio','prime')
+            compact('user','perio','prime', 'events')
         );
     }
 
     public function addsalaire(User $user, Request $request)
     {
-         $request->validate(
-             [
 
-                 'periode' => 'required',
-                 'mtfrais' => 'required',
-                 'nbrework' => 'required',
-                 'montant' => 'required',
-                 'mois' => 'required',
-                 'amical' => 'required',
 
-             ]
-         );
+        $s = 0 ;
+        $i = 0;
+
+        $prixcours = $request->nbrework * $request->mtfrais;
+
+        foreach ($request->prime as $primes)
+        {
+             $s = $s + $primes ;
+        }
+
+        $prixbenef = $prixcours + $request->benefcotistion + $s;
+
+        foreach ($request->events as $event)
+        {
+            $i = $i + $event ;
+        }
+
+        $prixreduct = $request->cotisation + $i + $request->amicale  ;
+
+   $prixTotal = $prixbenef-$prixreduct;
+
+         Salaire::create([
+
+             'user_id'=>$user->id,
+             'periode'=>$request->periode,
+             'mtfrais'=>$request->mtfrais,
+             'nbrework'=>$request->nbrework,
+             'montant'=>$prixTotal,
+             'mois'=>$request->mois,
+             'amical'=>$request->amicale,
+             'cotisation'=>$request->cotisation,
+             'benefcotisation'=>$request->benefcotistion,
+
+         ]);
+
+         $nbre = count($request->prime);
+
+          for ($j=0 ; $j < $nbre ; $j++)
+          {
+              Prime_user::create([
+                  'user_id'=>$user->id,
+                  'prime_id'=>$request->primes[$j],
+                  'mois'=>$request->mois,
+                  'montant'=>$request->prime[$j],
+
+              ]);
+
+          }
+
+return redirect()->to('salaires.salaire',$user->id)->with('sucess', 'le salaire à été sauvegardé ');
+
+
     }
 }

@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('mois');
             $table->string('mtfrais');
             $table->string('nbrework');
-            $table->string('montant');
+            $table->string('montantsalaire');
             $table->string('amical');
+            $table->string('cotisation')->nullable();
+            $table->string('benefcotisation')->nullable();
 
             $table->timestamps();
 
