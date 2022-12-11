@@ -83,9 +83,9 @@ Route::middleware('admin')->group(function () {
 
         Route::controller(\App\Http\Controllers\SalaireController::class)->name('salaires.')->group(function () {
 
-            Route::get('Teacher/salaire/{user}','salaire')->name('salaire');
-            Route::get('Teacher/Paiement/{user}','paie')->name('paie');
-            Route::post('Teacher/Add/{user}','addsalaire')->name('addsalaire');
+            Route::get('teacher/salaire/{user}','salaire')->name('salaire');
+            Route::get('teacher/Paiement/{user}','paie')->name('paie');
+            Route::post('teacher/Add/{user}','addsalaire')->name('addsalaire');
 
             //Route::get('student/Reçu_frais/{school}','recufrais')->name('recufrais');
 

@@ -16,7 +16,7 @@ class PrimeController extends Controller
     {
           $primes = Prime::orderBy('nom', 'asc')->get();
 
-        return view('Prime.index' , compact('primes'));
+        return view('prime.index' , compact('primes'));
     }
 
     /**
@@ -60,7 +60,7 @@ class PrimeController extends Controller
      */
     public function show(Prime $prime)
     {
-         return view('Prime/show', compact('prime'));
+         return view('prime/show', compact('prime'));
     }
 
     /**

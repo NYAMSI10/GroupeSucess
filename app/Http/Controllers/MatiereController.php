@@ -24,7 +24,7 @@ class MatiereController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
     }
 
     /**
@@ -41,11 +41,11 @@ class MatiereController extends Controller
             ],
         );
             $matiere = new Matiere([
-     
+
                 'nom'=>$request->nom,
               ]);
-    
-    
+
+
               $matiere->save();
               return redirect()->route('matiere.index')->with('sucess', 'Cette Matiére a été crée');
     }
@@ -58,7 +58,7 @@ class MatiereController extends Controller
      */
     public function show(Matiere $matiere)
     {
-        
+
     }
 
     /**
@@ -82,13 +82,13 @@ class MatiereController extends Controller
      */
     public function update(Request $request, Matiere $matiere)
     {
-        
+
         $request->validate([
             'nom' => 'required',
         ]);
         $matiere->update([
             'nom' => $request->nom,
-            
+
         ]);
         return redirect()->route('matiere.index')->with('sucess', 'Cette Matiére a été modifié');
 

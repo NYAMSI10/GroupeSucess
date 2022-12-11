@@ -53,7 +53,7 @@ class ClasseController extends Controller
 
 
 
-          return redirect()->route('classe.index')->with('sucess', 'Cette Classe a été crée');
+          return redirect()->route('classe.index')->with('sucess', 'Cette classe a été crée');
 
     }
 
@@ -100,7 +100,7 @@ class ClasseController extends Controller
         ]);
 
 
-        return redirect()->route('classe.index')->with('sucess', 'Cette Classe a été modfiée');
+        return redirect()->route('classe.index')->with('sucess', 'Cette classe a été modfiée');
 
     }
 
@@ -114,6 +114,6 @@ class ClasseController extends Controller
     {
         $classe->delete();
 
-        return redirect()->route('classe.index')->with('sucess', 'Cette Classe a été supprimé');
+        return redirect()->route('classe.index')->with('sucess', 'Cette classe a été supprimé');
     }
 }
