@@ -39,7 +39,7 @@
                                 <th class="text-center">Mois du payement</th>
                                 <th class="text-center">Nombre de scéance ou d'Heure éffectuée</th>
                                 <th class="text-center">Montant par scéance ou par heure </th>
-                                <th class="text-center">Montant</th>
+                                <th class="text-center">Montant du salaire</th>
                                 <th class="text-center">Période de cours </th>
                                 <th class="text-center">Opération</th>
 
@@ -61,22 +61,22 @@
                                         {{$salaire->nbrework}}
                                     </td>
                                     <td class="text-center">
-                                        {{$salaire->mtfrais}}
+                                        {{$salaire->mtfrais}} CFA
                                     </td>
                                     <td class="text-center">
-                                       <strong>   {{$salaire->montant}} CFA</strong>
+                                       <strong>   {{$salaire->montantsalaire}} CFA</strong>
                                     </td>
-                                    <td class="text-center"> {{$salaire->periode}}</td>
+                                    <td class="text-center"> {{nomperiode($salaire->periode)}}</td>
 
 
                                     <td class="text-center">
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=" "><i
+                                           style="color:white;" href=" {{route("salaire.edit", $salaire->id)}}"><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           onclick="return('Voulez-vous vraiment supprimer ce paiement?')" href=" " ><i
+                                           onclick="return confirm('Voulez-vous vraiment supprimer ce salaire?')" href=" " ><i
                                                 class="fa fa-1x fa-trash sr-icons"></i> </a>
 
 

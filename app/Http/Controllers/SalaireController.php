@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evenement;
+use App\Models\Periodeteacher;
 use App\Models\Prime;
 use App\Models\Prime_user;
 use App\Models\Salaire;
@@ -61,9 +62,14 @@ class SalaireController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Salaire $salaire)
     {
-        //
+      //echo users($salaire->user_id)->nom;
+        $perio = DB::table('periode_user')->where('user_id', $salaire->user_id)->get();
+
+        return view('salaire/showsalaire', compact('salaire','perio') )
+;
+
     }
 
     /**
@@ -73,9 +79,60 @@ class SalaireController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Salaire $salaire)
     {
-        //
+
+        $s = 0;
+        $i = 0;
+
+        $prixcours = $request->nbrework * $request->mtfrais;
+
+        foreach ($request->prime as $primes) {
+            $s = $s + $primes;
+        }
+
+        $prixbenef = $prixcours + $request->benefcotistion + $s;
+
+        foreach ($request->events as $event) {
+            $i = $i + $event;
+        }
+
+        $prixreduct = $request->cotisation + $i + $request->amicale;
+
+        $prixTotal = $prixbenef - $prixreduct;
+
+           $salaire->update([
+
+            'user_id' => $salaire->user_id,
+            'periode' => $request->periode,
+            'mtfrais' => $request->mtfrais,
+            'nbrework' => $request->nbrework,
+            'montantsalaire' => $prixTotal,
+            'mois' => $request->mois,
+            'amical' => $request->amicale,
+            'cotisation' => $request->cotisation,
+            'benefcotisation' => $request->benefcotistion,
+
+        ]);
+        $deleperiod = DB::table('prime_user')->where('user_id', $salaire->user_id)->where('mois',$salaire->mois)->delete();
+
+
+      $nbre = count($request->prime);
+
+        for ($j = 0; $j < $nbre; $j++) {
+            Prime_user::create([
+                'user_id' => $salaire->user_id,
+                'prime_id' => $request->primes[$j],
+                'mois' => $request->mois,
+                'montant' => $request->prime[$j],
+
+            ]);
+
+        }
+
+        return redirect()->route('salaires.salaire', $salaire->user_id)->with('sucess', 'le salaire à été modifié');
+
+
     }
 
     /**
@@ -140,7 +197,7 @@ class SalaireController extends Controller
             'periode' => $request->periode,
             'mtfrais' => $request->mtfrais,
             'nbrework' => $request->nbrework,
-            'montant' => $prixTotal,
+            'montantsalaire' => $prixTotal,
             'mois' => $request->mois,
             'amical' => $request->amicale,
             'cotisation' => $request->cotisation,
@@ -161,7 +218,7 @@ class SalaireController extends Controller
 
         }
 
-        return redirect()->to('salaires.salaire', $user->id)->with('sucess', 'le salaire à été sauvegardé ');
+        return redirect()->route('salaires.salaire', $user->id)->with('sucess', 'le salaire à été sauvegardé ');
 
 
     }

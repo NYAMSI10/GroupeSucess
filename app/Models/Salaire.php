@@ -17,7 +17,7 @@ class Salaire extends Model
         'periode',
         'mtfrais',
         'nbrework',
-        'montant',
+        'montantsalaire',
         'mois',
         'amical',
         'cotisation',
