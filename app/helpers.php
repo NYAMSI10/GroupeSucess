@@ -32,6 +32,14 @@ if (!function_exists('matiereusers')) {
         return \App\Models\Matiereteacher::all();
     }
 }
+if (!function_exists('matiereuserse')) {
+    function matiereuserse($a)
+    {
+        
+        $result=\App\Models\Matiereteacher::where('user_id',$a)->get();
+        return $result;
+    }
+}
 if (!function_exists('classeusers')) {
     function classeusers()
     {
@@ -128,3 +136,5 @@ if (!function_exists('primes')) {
 
         return $primes;
     }}
+
+    

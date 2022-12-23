@@ -281,4 +281,13 @@ class StudentController extends Controller
         return redirect()->route('students.frais', $school->student_id)->with('sucess', "Ce paiement a été supprimé avec sucess");
 
     }
+
+    public  function insolvable()
+    {
+
+   $insol = Scolarite::where('reste','!=', 0)->get();
+
+        return redirect()->route('students.insolvable',);
+
+    }
 }

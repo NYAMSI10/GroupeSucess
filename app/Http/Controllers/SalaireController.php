@@ -67,8 +67,7 @@ class SalaireController extends Controller
       //echo users($salaire->user_id)->nom;
         $perio = DB::table('periode_user')->where('user_id', $salaire->user_id)->get();
 
-        return view('salaire/showsalaire', compact('salaire','perio') )
-;
+        return view('salaire/showsalaire', compact('salaire','perio') );
 
     }
 
@@ -220,6 +219,16 @@ class SalaireController extends Controller
 
         return redirect()->route('salaires.salaire', $user->id)->with('sucess', 'le salaire à été sauvegardé ');
 
+
+    }
+
+
+    public function bulletinpaie(Salaire $salaire)
+    {
+      //echo users($salaire->user_id)->nom;
+        $perio = DB::table('periode_user')->where('user_id', $salaire->user_id)->get();
+
+        return view('salaire/recu', compact('salaire','perio') );
 
     }
 }

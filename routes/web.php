@@ -86,7 +86,7 @@ Route::middleware('admin')->group(function () {
             Route::get('teacher/salaire/{user}','salaire')->name('salaire');
             Route::get('teacher/Paiement/{user}','paie')->name('paie');
             Route::post('teacher/Add/{user}','addsalaire')->name('addsalaire');
-
+            Route::get('Bulletin_de_paie/{salaire}', 'bulletinpaie')->name('bulletinpaie');
             //Route::get('student/Reçu_frais/{school}','recufrais')->name('recufrais');
 
 

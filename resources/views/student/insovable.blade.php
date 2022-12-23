@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5> Salaire de l'enseignant <strong> {{$user->nom}}</strong> </h5>
+                    <h5>Liste des Elèves Insovables </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -27,20 +27,19 @@
                 </div>
                 <div class="ibox-content">
                     <div class="">
-                        <a href="{{route('salaires.paie', $user->id)}}" class="btn btn-primary ">
-                            <i class="fa fa-plus"></i> Paiement du salaire</a>
+                        <a href="{{route('student.create')}}" class="btn btn-primary ">
+                            <i class="fa fa-plus"></i> Ajouter</a>
                     </div>
                     <br>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover " id="datatable">
                             <thead>
                             <tr>
-                                <th class="text-center">Date de paiement</th>
-                                <th class="text-center">Mois du payement</th>
-                                <th class="text-center">Nombre de scéance ou d'Heure éffectuée</th>
-                                <th class="text-center">Montant par scéance ou par heure </th>
-                                <th class="text-center">Montant du salaire</th>
-                                <th class="text-center">Période de cours </th>
+                                <th class="text-center">Nom et Prénom</th>
+                                <th class="text-center">Quartier</th>
+                                <th class="text-center">Tel du parent</th>
+                                <th class="text-center">Classe</th>
+                                <th class="text-center">Frais de cours</th>
                                 <th class="text-center">Opération</th>
 
 
@@ -49,46 +48,39 @@
 
                             <tbody>
 
-                             @foreach($salaires as $salaire)
-
-
-
+                            @foreach($students as $student)
                                 <tr>
-                                    <td class="text-center"> {{$salaire->created_at->format('d-m-Y \à H:i') }}</td>
-                                    <td class="text-center">{{$salaire->mois}} </td>
+                                    <td class="text-center">{{$student->nom }}</td>
+                                    <td class="text-center">{{$student->quartier}}</td>
+                                    <td class="text-center">{{$student->tel}}</td>
+                                    <td class="text-center">{{ nomclas($student->classe_id) }}</td>
 
                                     <td class="text-center">
-                                        {{$salaire->nbrework}}
-                                    </td>
-                                    <td class="text-center">
-                                        {{$salaire->mtfrais}} CFA
-                                    </td>
-                                    <td class="text-center">
-                                       <strong>   {{$salaire->montantsalaire}} CFA</strong>
-                                    </td>
-                                    <td class="text-center"> {{nomperiode($salaire->periode)}}</td>
+                                        <a class="btn btn-space btn-info btn-xs voir" href="{{ route('students.frais', $student->id)}}"><i
+                                                class="fa fa-1x fa-money sr-icons"></i></a>
 
-
+                                    </td>
                                     <td class="text-center">
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href="{{route("salaire.edit", $salaire->id)}}"><i
+                                           style="color:white;" href="{{ route('student.edit', $student->id)}}"><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
-                                                <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=" {{route("salaires.bulletinpaie", $salaire->id)}}"><i
-                                                class="fa fa-1x fa-eye sr-icons"></i> </a>
 
-                                        <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           onclick="return confirm('Voulez-vous vraiment supprimer ce salaire?')" href=" " ><i
-                                                class="fa fa-1x fa-trash sr-icons"></i> </a>
-
+                                        <form action="{{ route('student.destroy', $student->id)}}" method="post"
+                                              style="display: inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-danger btn btn-xs"><i
+                                                    class="fa fa-1x fa-trash sr-icons"></i></button>
+                                        </form>
 
 
                                     </td>
 
 
                                 </tr>
-                             @endforeach
+
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -138,4 +130,5 @@
         });
 
     </script>
+
 @endsection
