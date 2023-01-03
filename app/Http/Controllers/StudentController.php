@@ -287,7 +287,7 @@ class StudentController extends Controller
 
    $insol = Scolarite::where('reste','!=', 0)->get();
 
-        return redirect()->route('students.insolvable',);
+        return view('student/insolvable',compact('insol'));
 
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppelController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\StudentController;
@@ -74,7 +75,7 @@ Route::middleware('admin')->group(function () {
             Route::get('student/show_frais/{school}','showfrais')->name('showfrais');
             Route::post('student/update_frais/{school}','updatefrais')->name('updatefrais');
             Route::get('student/Delete_frais/{school}','deletefrais')->name('deletefrais');
-
+            Route::get('student/insolvable','insolvable')->name('insolvable');
             //Route::get('student/Reçu_frais/{school}','recufrais')->name('recufrais');
 
 
@@ -87,17 +88,23 @@ Route::middleware('admin')->group(function () {
             Route::get('teacher/Paiement/{user}','paie')->name('paie');
             Route::post('teacher/Add/{user}','addsalaire')->name('addsalaire');
             Route::get('Bulletin_de_paie/{salaire}', 'bulletinpaie')->name('bulletinpaie');
-            //Route::get('student/Reçu_frais/{school}','recufrais')->name('recufrais');
+            //Route::get('student/Reçu_frais/{school}','recufrais')->name('recufrais')
+        });
+          
+        Route::controller(AppelController::class)->name('appel.')->group(function() {
 
-
+            Route::get('discipline/classes/{periode}', 'classe')->name('classe');
+            Route::get('discipline/liste/{periode}/{classe}', 'list')->name('list');
 
         });
-
+             
         Route::resource('matiere', MatiereController::class);
         Route::resource('user', UserController::class);
         Route::resource('student', \App\Http\Controllers\StudentController::class);
         Route::resource('primes', \App\Http\Controllers\PrimeController::class);
         Route::resource('salaire', \App\Http\Controllers\SalaireController::class);
         Route::resource('evenements', \App\Http\Controllers\EvenementController::class);
+        Route::resource('discipline',AppelController::class);
+  
     });
 });

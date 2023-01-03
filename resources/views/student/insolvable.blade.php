@@ -26,21 +26,18 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="">
-                        <a href="{{route('student.create')}}" class="btn btn-primary ">
-                            <i class="fa fa-plus"></i> Ajouter</a>
-                    </div>
+                 
                     <br>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover " id="datatable">
                             <thead>
                             <tr>
                                 <th class="text-center">Nom et Prénom</th>
-                                <th class="text-center">Quartier</th>
-                                <th class="text-center">Tel du parent</th>
                                 <th class="text-center">Classe</th>
-                                <th class="text-center">Frais de cours</th>
-                                <th class="text-center">Opération</th>
+                                <th class="text-center">Période</th>
+                                <th class="text-center">Mois de Paiement </th>
+                                <th class="text-center">Reste à payer </th>
+                             
 
 
                             </tr>
@@ -48,34 +45,17 @@
 
                             <tbody>
 
-                            @foreach($students as $student)
+                            @foreach($insol as $insole)
                                 <tr>
-                                    <td class="text-center">{{$student->nom }}</td>
-                                    <td class="text-center">{{$student->quartier}}</td>
-                                    <td class="text-center">{{$student->tel}}</td>
-                                    <td class="text-center">{{ nomclas($student->classe_id) }}</td>
-
-                                    <td class="text-center">
-                                        <a class="btn btn-space btn-info btn-xs voir" href="{{ route('students.frais', $student->id)}}"><i
-                                                class="fa fa-1x fa-money sr-icons"></i></a>
-
-                                    </td>
-                                    <td class="text-center">
-
-                                        <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href="{{ route('student.edit', $student->id)}}"><i
-                                                class="fa fa-1x fa-pencil sr-icons"></i> </a>
-
-                                        <form action="{{ route('student.destroy', $student->id)}}" method="post"
-                                              style="display: inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn-danger btn btn-xs"><i
-                                                    class="fa fa-1x fa-trash sr-icons"></i></button>
-                                        </form>
+                                    <td class="text-center">{{student($insole->student_id)->nom}}</td>
+                                    <td class="text-center">{{nomclas(student($insole->student_id)->classe_id)}}</td>
+                                    <td class="text-center">{{nomperiode(student($insole->student_id)->periode_id)}}</td>
+                                    <td class="text-center">{{$insole->mois}}</td>
+                                    <td class="text-center" style="color: red;">{{$insole->reste}} FCFA</td>
 
 
-                                    </td>
+                                   
+                               
 
 
                                 </tr>

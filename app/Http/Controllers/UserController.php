@@ -256,7 +256,10 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+
+        $remember_me = $request->has('remember') ? true : false;
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password],$remember_me)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         }

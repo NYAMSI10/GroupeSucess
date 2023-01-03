@@ -80,6 +80,8 @@
       <a href="{{route('connexion')}}" class="get-started-btn">Connexion</a>
 
     </div>
+
+    
   </header><!-- End Header -->
 
    @yield('content')

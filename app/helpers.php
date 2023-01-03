@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Student;
 
 if (!function_exists('classes')) {
     function classes()
@@ -137,4 +138,11 @@ if (!function_exists('primes')) {
         return $primes;
     }}
 
+    if (!function_exists('student')) {
+        function student($a)
+        {
     
+            $students = Student::find($a);
+    
+            return $students;
+        }}
