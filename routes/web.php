@@ -104,6 +104,10 @@ Route::middleware('admin')->group(function () {
 
         });
 
+
+
+
+         // ROUTE RESOURCE
         Route::resource('matiere', MatiereController::class);
         Route::resource('user', UserController::class);
         Route::resource('student', \App\Http\Controllers\StudentController::class);
@@ -111,6 +115,7 @@ Route::middleware('admin')->group(function () {
         Route::resource('salaire', \App\Http\Controllers\SalaireController::class);
         Route::resource('evenements', \App\Http\Controllers\EvenementController::class);
         Route::resource('discipline',AppelController::class);
+        Route::resource('calendar', \App\Http\Controllers\CalendarController::class);
 
     });
 });
