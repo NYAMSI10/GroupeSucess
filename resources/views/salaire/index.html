@@ -1,0 +1,132 @@
+<div class="container" id="invoice">
+  
+
+    <div class="invoice">
+      <div class="row">
+        <div class="col-7">
+          <img src="{{asset('asset/img/logo.jpg')}}" class="logo">
+        </div>
+        <div class="col-5">
+          <h1 class="document-type ">Bulletin de Paie</h1>
+          <p class="text-right"><strong>15 {{$salaire->mois}}</strong></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7">
+          <p>
+            <br>
+            <strong>GROUPE SUCCÈS +🎓🎓</strong><br>
+            
+          </p>
+        </div>
+        <div class="col-5" style="margin-left: -7%; margin-top:-5%">
+          <br><br><br>
+          <p style="width: 150%;">
+          
+            Nom Employé : <em><strong>{{users($salaire->user_id)->nom}}</strong></em><br>
+            Département : 
+            @foreach(matiereuserse($salaire->user_id) as $matiere)
+              @foreach(matieres() as $mat)
+              @if($mat->id == $matiere->matiere_id)
+            <em><strong>{{$mat->nom}}</strong></em>
+            @endif
+            @endforeach
+            @endforeach
+            <br>
+            Période de cours : <em><strong>{{nomperiode($salaire->periode)}}</strong></em>
+          </p>
+        </div>
+      </div>
+     <br>
+      <table class="table table-striped" >
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>nbre de Scéance ou d'Heure</th>
+            <th>Prix par Scéance ou par d'Heure</th>
+            
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr >
+            <td>Cours dispensés</td>
+            <td class="text-center">{{$salaire->nbrework}}</td>
+            <td class="text-center">{{$salaire->mtfrais}} FCFA</td>
+            <td class="text-center" style="width: 20%;"> {{$salaire->mtfrais * $salaire->nbrework}} FCFA  </td>
+          
+          </tr>
+          <tr>
+            <td>Amicale</td>
+            <td class="text-center">/</td>
+            <td class="text-center">/</td>
+            <td class="text-center" style="width: 20%;"> {{($salaire->amical  == null)? 0 : $salaire->amical }} FCFA </td>
+           
+          </tr>
+          <tr>
+            <td>cotisation</td>
+            <td class="text-center">/</td>
+            <td class="text-center">/</td>
+            <td class="text-center" style="width: 20%;"> {{($salaire->cotisation == null)? 0 : $salaire->cotisation}} FCFA </td>
+           
+          </tr>
+          <tr>
+            <td>Bénéficiaire Cotisation</td>
+            <td class="text-center">/</td>
+            <td class="text-center">/</td>
+            <td class="text-center" style="width: 20%;"> {{ ($salaire->benefcotisation == null)? 0 : $salaire->benefcotisation }} FCFA </td>
+           
+          </tr>
+  
+          @foreach(primes() as $prime)
+                                   @foreach(primeusers() as $primeuser)
+                                       @if(($prime->id == $primeuser->prime_id) && ($primeuser->mois == $salaire->mois) && ($primeuser->user_id == $salaire->user_id))
+                                            <tr >
+            <td> {{$prime->nom}}</td>
+            <td class="text-center">/</td>
+            <td class="text-center">/</td>
+            <td class="text-center" style="width: 20%;">{{$primeuser->montant}} FCFA  </td>
+          
+          </tr> 
+  
+                                       @endif
+  
+  
+                                      @endforeach
+                                  @endforeach
+  
+  
+                                  @foreach(events() as $event)
+                                  <tr >
+            <td> {{$event->nom}}</td>
+            <td class="text-center">/</td>
+            <td class="text-center">/</td>
+            <td class="text-center" style="width: 20%;">{{$event->montant}}FCFA  </td>
+          
+          </tr> 
+  
+  
+     @endforeach
+          
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-8">
+        </div>
+        <div class="col-4">
+          <table class="table table-sm text-right">
+            <tr>
+              <td> <strong>Net à payer </strong></td>
+              <td class="text-right"><em><strong>{{$salaire->montantsalaire}} FCFA</strong></em></td>
+            </tr>
+            
+          </table>
+        </div>
+      </div>
+      <br>
+        <a href="#" id="download" class="btn btn-light border text-black-50 shadow-none"><i class="fa fa-download"></i> Download</a> </div>
+  
+     
+    </div>
+  
+  </div>

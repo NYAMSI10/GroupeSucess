@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Liste des Classes </h5>
+                    <h5>Liste des Périodes de Cours </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -26,42 +26,21 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="">
-                        <a data-toggle="modal" data-target="#create" class="btn btn-primary ">
-                            <i class="fa fa-plus"></i> Ajouter</a>
-                    </div>
-                    <br>
+                   
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover " id="datatable">
                             <thead>
                             <tr>
-                                <th class="text-center">Date</th>
                                 <th class="text-center">Nom</th>
-                                <th class="text-center">Opération</th>
+                  
 
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($classe as $clas)
+                            @foreach(periodes() as $perio)
                                 <tr>
-                                    <td class="text-center">{{$clas->created_at->format('d-m-Y \à H:i') }}</td>
-                                    <td class="text-center">{{$clas->nom}}</td>
-                                    <td class="text-center">
-                                        <!-- <a class="btn btn-space btn-info btn-xs voir" ><i class="fa fa-1x fa-eye sr-icons"></i></a> -->
-
-                                        <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href="{{ route('classe.show', $clas->id)}}"><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
-
-                                        <form action="{{ route('classe.destroy', $clas->id)}}" method="post"
-                                              style="display: inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn-danger btn btn-xs"><i
-                                                    class="fa fa-1x fa-trash sr-icons"></i></button>
-                                        </form>
-
-
-                                    </td>
+                                   <td class="text-center"> <a href="{{route('appel.classe',$perio->id)}}">{{$perio->nom}}</a></td>
+                     
 
                                 </tr>
                             @endforeach
@@ -78,14 +57,14 @@
     <div class="modal inmodal" id="create" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content animated flipInY">
-                <form action="{{route('classe.store')}}" method="POST">
+                <form action="{{route('matiere.store')}}" method="POST">
                     @csrf
                     <div class="modal-body">
 
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="control-label" for="value">Nom de la classe</label>
+                                    <label class="control-label" for="value">Nom de la matiere</label>
                                     <input type="text" id="nom" class="form-control" name="nom"
                                            value="{{ old('nom') }}" required>
                                 </div>
@@ -102,35 +81,8 @@
         </div>
     </div>
 
-    <!-- update -->
-    <div class="modal inmodal" id="update" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated flipInY">
-                <form action="/classe" method="POST" id="viewform">
-                    @csrf
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label class="control-label" for="value">Nom de la classe</label>
-                                    <input type="text" name="nom" id="nom" class="form-control"
-                                    >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                        <button type="button" class="btn btn-white" data-dismiss="modal"><i
-                                class="fa fa-times"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 @endsection
+
 
 @section('script')
 
@@ -169,5 +121,3 @@
     </script>
 
 @endsection
-
-

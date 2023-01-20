@@ -54,6 +54,11 @@
                 </div>
                 @enderror
             </div>
+            <div class="checkbox m-r-xs" style="margin-left: -40%;">
+                                    <input type="checkbox" id="checkbox1" name="remember" style="margin-left: 0.5%;">
+                                    <label for="checkbox1">
+Se Souvenir de moi                                    </label>
+                                </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Conexion</button>
 
 

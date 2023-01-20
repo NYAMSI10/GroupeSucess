@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Salaire extends Model
+class Appel extends Model
 {
     use HasFactory;
 
-    protected $table = 'salaires';
+    protected $table = 'appels';
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'student_id',
+        'periode_id',
+        'start',
+        'end',
         'user_id',
-        'periode',
-        'mtfrais',
-        'nbrework',
-        'montantsalaire',
-        'mois',
-        'amical',
-        'cotisation',
-        'benefcotisation'
+        'matiere_id',
+        'classe_id',
+      
 
     ];
 }

@@ -92,7 +92,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Liste des Insolvables</span></a>
+                        <a href="{{route('students.insolvable')}}"><i class="fa fa-flask"></i> <span class="nav-label">Liste des Insolvables</span></a>
                     </li>
                     <li>
                         <a href="{{route('primes.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Primes</span></a>
@@ -102,7 +102,14 @@
                         <a href="{{route('evenements.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Evénèmentts </span></a>
 
                     </li>
+                    <li>
+                        <a href="{{route('evenements.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Discipline </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="{{route('discipline.index')}}"> Faire l'appel</a></li>
+                            <li><a href="{{route('appel.absent')}}">Liste des Absences</a></li>
 
+                        </ul>
+                    </li>
 
 
 
@@ -727,9 +734,7 @@
     <script src="{{asset('js/plugins/flot/jquery.flot.resize.js')}}"></script>
     <script src="{{asset('js/plugins/flot/jquery.flot.pie.js')}}"></script>
 
-    <!-- Peity -->
-    <script src="{{asset('js/plugins/peity/jquery.peity.min.js')}}"></script>
-    <script src="{{asset('')}}js/demo/peity-demo.js"></script>
+
 
     <!-- Custom and plugin javascript -->
     <script src="{{asset('js/inspinia.js')}}"></script>

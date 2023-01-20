@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Student;
 
 if (!function_exists('classes')) {
     function classes()
@@ -30,6 +31,14 @@ if (!function_exists('matiereusers')) {
     function matiereusers()
     {
         return \App\Models\Matiereteacher::all();
+    }
+}
+if (!function_exists('matiereuserse')) {
+    function matiereuserse($a)
+    {
+
+        $result=\App\Models\Matiereteacher::where('user_id',$a)->get();
+        return $result;
     }
 }
 if (!function_exists('classeusers')) {
@@ -71,10 +80,10 @@ if (!function_exists('nomclas')) {
         function moise()
         {
 
-            $collect =['JANVIER'.date("Y"),
-                'FEVRIER'.date("Y"), 'MARS'.date("Y"),'AVRIL'.date("Y"), 'MAI'.date("Y"),
-                'JUIN'.date("Y"),'JUILLET'.date("Y"),'AOUT'.date("Y"),'SEPTEMBRE'.date("Y"),'OCTOBRE'.date("Y"),
-                'NOVEMBRE'.date("Y"),'DECEMBRE'.date("Y"), ];
+            $collect =['JANVIER'.' '.date("Y"),
+                'FEVRIER'.' '.date("Y"), 'MARS'.' '.date("Y"),'AVRIL'.' '.date("Y"), 'MAI'.' '.date("Y"),
+                'JUIN'.' '.date("Y"),'JUILLET'.' '.date("Y"),'AOUT'.' '.date("Y"),'SEPTEMBRE'.' '.date("Y"),'OCTOBRE'.' '.date("Y"),
+                'NOVEMBRE'.' '.date("Y"),'DECEMBRE'.' '.date("Y"), ];
 
             return $collect;
 
@@ -90,3 +99,59 @@ if (!function_exists('nomperiode')) {
         return $nomperiod->nom;
 
     }}
+
+if (!function_exists('users')) {
+    function users($id)
+    {
+
+        $nomusers = \App\Models\User::find($id);
+
+        return $nomusers;
+    }}
+
+if (!function_exists('nommat')) {
+    function nommat($id)
+    {
+
+        $nommat = \App\Models\Matiere::find($id);
+
+        return $nommat;
+    }}
+
+if (!function_exists('primeusers')) {
+    function primeusers()
+    {
+
+        $primeusers = \App\Models\Prime_user::all();
+
+        return $primeusers;
+
+    }}
+
+
+if (!function_exists('events')) {
+    function events()
+    {
+
+        $events = \App\Models\Evenement::all();
+
+        return $events;
+    }}
+
+if (!function_exists('primes')) {
+    function primes()
+    {
+
+        $primes = \App\Models\Prime::all();
+
+        return $primes;
+    }}
+
+    if (!function_exists('student')) {
+        function student($a)
+        {
+
+            $students = Student::find($a);
+
+            return $students;
+        }}
