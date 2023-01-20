@@ -106,8 +106,8 @@
                         <a href="{{route('evenements.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Discipline </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="{{route('discipline.index')}}"> Faire l'appel</a></li>
-                            <li><a href="{{route('users.soir')}}">Liste des Absences</a></li>
-       
+                            <li><a href="{{route('appel.absent')}}">Liste des Absences</a></li>
+
                         </ul>
                     </li>
 
@@ -734,7 +734,7 @@
     <script src="{{asset('js/plugins/flot/jquery.flot.resize.js')}}"></script>
     <script src="{{asset('js/plugins/flot/jquery.flot.pie.js')}}"></script>
 
-   
+
 
     <!-- Custom and plugin javascript -->
     <script src="{{asset('js/inspinia.js')}}"></script>

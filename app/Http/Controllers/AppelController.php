@@ -40,9 +40,9 @@ class AppelController extends Controller
     {
 
          foreach ($request->absent as $abs) {
-            
-        
-            
+
+
+
           Appel::create([
             'student_id'=>$abs,
             'periode_id'=> $request->periode,
@@ -51,12 +51,12 @@ class AppelController extends Controller
             'user_id'=>auth()->user()->id,
             'matiere_id'=>$request->matiere,
             'classe_id'=>$request->classe,
-  
-          ]);                  
+
+          ]);
 
         }
 
-         return redirect()->route('discipline.index')->with('Votre appel a été effectuer'); 
+         return redirect()->route('discipline.index')->with('Votre appel a été effectuer');
 
     }
 
@@ -112,9 +112,16 @@ class AppelController extends Controller
     }
 
     public function list(Periode $periode, Classe $classe)
-    {   
+    {
                $students = Student::where('classe_id', $classe->id)->get();
-               
+
             return view ('discipline.list',compact('periode','students','classe'));
+    }
+
+    public  function absent()
+    {
+         $students = Appel::orderBy('created_at', 'ASC')->get();
+
+         return view('discipline.absence', compact('students'));
     }
 }

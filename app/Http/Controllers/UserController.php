@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Testmarkdown;
 use App\Models\Classeteacher;
 use App\Models\Matiereteacher;
 use App\Models\Periode;
@@ -11,6 +12,7 @@ use Auth;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -89,6 +91,16 @@ class UserController extends Controller
         }
 
         $mot = rand(8);
+
+        $user =[
+
+            "nom" => $request->nom,
+            "email" => $request->email,
+            "password" => $mot,
+        ];
+        Mail::to($request->email)->send(new Testmarkdown($user));
+
+
         User::create([
 
             "nom" => $request->nom,

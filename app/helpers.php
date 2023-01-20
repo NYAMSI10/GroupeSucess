@@ -36,7 +36,7 @@ if (!function_exists('matiereusers')) {
 if (!function_exists('matiereuserse')) {
     function matiereuserse($a)
     {
-        
+
         $result=\App\Models\Matiereteacher::where('user_id',$a)->get();
         return $result;
     }
@@ -109,6 +109,15 @@ if (!function_exists('users')) {
         return $nomusers;
     }}
 
+if (!function_exists('nommat')) {
+    function nommat($id)
+    {
+
+        $nommat = \App\Models\Matiere::find($id);
+
+        return $nommat;
+    }}
+
 if (!function_exists('primeusers')) {
     function primeusers()
     {
@@ -141,8 +150,8 @@ if (!function_exists('primes')) {
     if (!function_exists('student')) {
         function student($a)
         {
-    
+
             $students = Student::find($a);
-    
+
             return $students;
         }}
