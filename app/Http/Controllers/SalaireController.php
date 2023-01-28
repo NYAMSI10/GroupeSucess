@@ -140,9 +140,11 @@ class SalaireController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Salaire $salaire)
     {
-        //
+         $salaire->delete();
+        return redirect()->route('salaires.salaire', $salaire->user_id)->with('sucess', 'le salaire à été supprimé ');
+
     }
 
     public function salaire(User $user)

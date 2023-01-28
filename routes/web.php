@@ -52,8 +52,12 @@ Route::middleware('admin')->group(function () {
 
         Route::resource('/classe', ClasseController::class);
 
-        Route::controller(ClasseController::class)->name('classe.')->group(function () {
+        Route::controller(UserController::class)->name('users.')->group(function () {
 
+
+                Route::get('compte_utilisateur','listuser')->name('list');
+            Route::get('discipline/actif/{user}', 'actif')->name('actif');
+            Route::get('discipline/desactif/{user}', 'desactif')->name('desactif');
 
         });
 
@@ -104,6 +108,9 @@ Route::middleware('admin')->group(function () {
 
         });
 
+
+
+         // ROUTE RESOURCE
         Route::resource('matiere', MatiereController::class);
         Route::resource('user', UserController::class);
         Route::resource('student', \App\Http\Controllers\StudentController::class);
@@ -111,6 +118,7 @@ Route::middleware('admin')->group(function () {
         Route::resource('salaire', \App\Http\Controllers\SalaireController::class);
         Route::resource('evenements', \App\Http\Controllers\EvenementController::class);
         Route::resource('discipline',AppelController::class);
+        Route::resource('profil', \App\Http\Controllers\ProfilController::class);
 
     });
 });

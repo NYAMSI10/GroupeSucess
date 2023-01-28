@@ -7,6 +7,7 @@ use App\Models\Classe;
 use App\Models\Periode;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AppelController extends Controller
 {
@@ -51,12 +52,13 @@ class AppelController extends Controller
             'user_id'=>auth()->user()->id,
             'matiere_id'=>$request->matiere,
             'classe_id'=>$request->classe,
+              'jour'=>date('Y-m-d'),
 
           ]);
 
         }
 
-         return redirect()->route('discipline.index')->with('Votre appel a été effectuer');
+         return redirect()->route('discipline.index')->with('sucess','Votre appel a été effectuer');
 
     }
 
@@ -107,7 +109,10 @@ class AppelController extends Controller
 
 
     public function classe(Periode $periode)
+
     {
+
+
             return view ('discipline.classe',compact('periode'));
     }
 
@@ -115,12 +120,22 @@ class AppelController extends Controller
     {
                $students = Student::where('classe_id', $classe->id)->get();
 
+
+        $statut = DB::table('appels')->where('periode_id', $periode->id)->where('user_id',auth()->user()->id)->where('classe_id', $classe->id)->where('jour', date("Y-m-d"))->value('id');
+
+
+        if ($statut )
+        {
+          return redirect()->route('discipline.index')->with('fox','dfdfdf');
+
+        }
+
             return view ('discipline.list',compact('periode','students','classe'));
     }
 
     public  function absent()
     {
-         $students = Appel::orderBy('created_at', 'ASC')->get();
+         $students = Appel::orderBy('jour', 'desc')->get();
 
          return view('discipline.absence', compact('students'));
     }

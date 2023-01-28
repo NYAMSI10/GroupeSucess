@@ -109,6 +109,7 @@ class UserController extends Controller
             "tel" => $request->tel,
             "is_admin" => $request->role,
             "password" => Hash::make($mot),
+            "active"=> 1 ,
         ]);
 
         $iduser = \DB::table('users')->where('tel', $request->tel)->value('id');
@@ -290,4 +291,31 @@ class UserController extends Controller
             'pass' => 'Vous Vous etes déconnecté ',
         ]);
     }
+    public function  listuser()
+    {
+
+           return view('listuser');
+    }
+
+    public function  actif(User $user)
+    {
+
+            DB::table('users')->where('id',$user->id)->update(["active"=>1]);
+
+        return redirect()->route('users.list')->with('sucess', 'Le compte a été activé de nouveau');
+
+    }
+
+
+    public function  desactif(User $user)
+    {
+
+        DB::table('users')->where('id',$user->id)->update(["active"=>0]);
+
+
+
+        return redirect()->route('users.list')->with('sucess', 'Le compte a été désactivé de nouveau');
+
+    }
+
 }

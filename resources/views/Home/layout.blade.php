@@ -29,8 +29,7 @@
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
     @yield('links')
 
@@ -43,13 +42,13 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="{{asset('img/profile_small.jpg')}}" />
+                            <img alt="image" class="img-circle" src="{{asset('photo/'.users(auth()->user()->id)->image)}}" width="50" height="50"/>
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->nom}}</strong>
                              </span> <span class="text-muted text-xs block">Admin <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="{{route('profil.index')}}">Profile</a></li>
 
                                 <li class="divider"></li>
                                 <li><a href="{{route('user.logout')}}">Logout</a></li>
@@ -65,6 +64,9 @@
                             <li ><a href="index.html">Vue global</a></li>
 
                         </ul>
+                    </li>
+                    <li>
+                        <a href="{{route('users.list')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Compte Utilisateur</span></a>
                     </li>
                     <li>
                         <a href="{{route('matiere.index')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Matiéres</span></a>
@@ -103,13 +105,14 @@
 
                     </li>
                     <li>
-                        <a href="{{route('evenements.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Discipline </span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Discipline </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="{{route('discipline.index')}}"> Faire l'appel</a></li>
                             <li><a href="{{route('appel.absent')}}">Liste des Absences</a></li>
 
                         </ul>
                     </li>
+
 
 
 
@@ -772,6 +775,10 @@
                     <?php if(session('sucess')) {   ?>
                 toastr.success('  <?php echo session('sucess') ; ?>');
        <?php }  ?>
+       <?php if(session('fox')) {   ?>
+       toastr.error('Désolez vous avez déja fait l\'appel dans cette classe');
+                <?php }  ?>
+
 
                // toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
 

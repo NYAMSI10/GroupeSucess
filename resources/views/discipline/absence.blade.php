@@ -45,7 +45,7 @@
                             <tbody>
                             @foreach($students as $student)
                                 <tr>
-                                    <td class="text-center"> {{$student->created_at->format('d-m-Y \à H:i')}}</td>
+                                    <td class="text-center"> {{$student->jour}}</td>
                                     <td class="text-center"> {{student($student->student_id)->nom}}</td>
                                     <td class="text-center"> {{nomclas($student->classe_id)}}</td>
                                     <td class="text-center"> {{nomperiode($student->periode_id)}}</td>

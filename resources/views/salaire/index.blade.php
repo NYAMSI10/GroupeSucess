@@ -79,7 +79,7 @@
                                                 class="fa fa-1x fa-eye sr-icons"></i> </a>
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           onclick="return confirm('Voulez-vous vraiment supprimer ce salaire?')" href=" " ><i
+                                           onclick="return confirm('Voulez-vous vraiment supprimer ce salaire?')" href="{{route("salaires.salaire", $salaire->id)}}" ><i
                                                 class="fa fa-1x fa-trash sr-icons"></i> </a>
 
 

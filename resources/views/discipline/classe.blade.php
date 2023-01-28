@@ -26,21 +26,20 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                   
+
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover " id="datatable">
                             <thead>
                             <tr>
                                 <th class="text-center">Nom</th>
-                  
+
 
                             </tr>
                             </thead>
                             <tbody>
                             @foreach(classes() as $classe)
                                 <tr>
-                                   <td class="text-center"> <a href="{{route('appel.list',[$periode->id, $classe->id])}}">{{$classe->nom}}</a></td>
-                              
+                                   <td class="text-center" > <a href="{{route('appel.list',[$periode->id, $classe->id])}}">{{$classe->nom}}</a></td>
 
                                 </tr>
                             @endforeach
@@ -53,7 +52,7 @@
         </div>
     </div>
 
-    
+
 
 @endsection
 
