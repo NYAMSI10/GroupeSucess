@@ -155,3 +155,12 @@ if (!function_exists('primes')) {
 
             return $students;
         }}
+
+if (!function_exists('user')) {
+    function user()
+    {
+
+        $user = \App\Models\User::all();
+
+        return $user;
+    }}

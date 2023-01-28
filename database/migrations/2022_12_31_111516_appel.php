@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('periode_id')->constrained();
             $table->string('start');
             $table->string('end');
+            $table->date('jour');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('matiere_id')->constrained();
             $table->foreignId('classe_id')->constrained();
