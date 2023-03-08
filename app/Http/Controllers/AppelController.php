@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appel;
 use App\Models\Classe;
 use App\Models\Periode;
+use App\Models\Presence;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,9 +37,23 @@ class AppelController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function store(Request $request)
     {
+
+           Presence::create([
+
+               'start'=>$request->start,
+               'end'=>$request->end,
+               'user_id'=>auth()->user()->id,
+               'accept'=> 0,
+'matiere_id'=>$request->matiere,
+            'classe_id'=>$request->classe,
+               'periode_id'=> $request->periode,
+
+           ]);
+
+
 
          foreach ($request->absent as $abs) {
 

@@ -12,18 +12,8 @@
 @section('content')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
-            <h2>Contacts 2</h2>
-            <ol class="breadcrumb">
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    App Views
-                </li>
-                <li class="active">
-                    <strong>Contacts 2</strong>
-                </li>
-            </ol>
+            <h2>Compte Utilisateur</h2>
+
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -37,12 +27,17 @@
 
                     <a href="#">
 
+                         @if($user->image != null)
                         <img alt="image" class="img-circle" src="{{asset('photo/'.$user->image)}}">
-
+                        @else
+                            <img alt="image" class="img-circle" src="{{asset('photo/profile.png')}}">
+                        @endif
 
                         <h3 class="m-b-xs"><strong>{{$user->nom}}</strong></h3>
 
                         <div class="font-bold">Enseignant</div>
+
+
                         <address class="m-t-md">
                             {{$user->quartier}}<br>
                              {{$user->tel}}<br>

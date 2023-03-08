@@ -164,3 +164,12 @@ if (!function_exists('user')) {
 
         return $user;
     }}
+if (!function_exists('nomuser')) {
+    function nomuser($a)
+    {
+
+        $nomuser = \App\Models\User::find($a);
+
+        return $nomuser;
+    }}
+

@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5> Salaire de l'enseignant <strong> {{$user->nom}}</strong> </h5>
+                    <h5> Salaire de l'enseignant <strong> {{$user->nom}}</strong></h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -38,9 +38,9 @@
                                 <th class="text-center">Date de paiement</th>
                                 <th class="text-center">Mois du payement</th>
                                 <th class="text-center">Nombre de scéance ou d'Heure éffectuée</th>
-                                <th class="text-center">Montant par scéance ou par heure </th>
+                                <th class="text-center">Montant par scéance ou par heure</th>
                                 <th class="text-center">Montant du salaire</th>
-                                <th class="text-center">Période de cours </th>
+                                <th class="text-center">Période de cours</th>
                                 <th class="text-center">Opération</th>
 
 
@@ -49,9 +49,7 @@
 
                             <tbody>
 
-                             @foreach($salaires as $salaire)
-
-
+                            @foreach($salaires as $salaire)
 
                                 <tr>
                                     <td class="text-center"> {{$salaire->created_at->format('d-m-Y \à H:i') }}</td>
@@ -64,7 +62,11 @@
                                         {{$salaire->mtfrais}} CFA
                                     </td>
                                     <td class="text-center">
-                                       <strong>   {{$salaire->montantsalaire}} CFA</strong>
+                                        @if($salaire->montantsalaire < 0)
+                                            <strong style="color: red">   {{$salaire->montantsalaire}} CFA</strong>
+                                        @else
+                                            <strong>   {{$salaire->montantsalaire}} CFA</strong>
+                                        @endif
                                     </td>
                                     <td class="text-center"> {{nomperiode($salaire->periode)}}</td>
 
@@ -74,21 +76,22 @@
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
                                            style="color:white;" href="{{route("salaire.edit", $salaire->id)}}"><i
                                                 class="fa fa-1x fa-pencil sr-icons"></i> </a>
-                                                <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=" {{route("salaires.bulletinpaie", $salaire->id)}}"><i
+                                        <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
+                                           style="color:white;"
+                                           href=" {{route("salaires.bulletinpaie", $salaire->id)}}"><i
                                                 class="fa fa-1x fa-eye sr-icons"></i> </a>
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           onclick="return confirm('Voulez-vous vraiment supprimer ce salaire?')" href="{{route("salaires.salaire", $salaire->id)}}" ><i
+                                           onclick="return confirm('Voulez-vous vraiment supprimer ce salaire?')"
+                                           href="{{route("salaires.salaire", $salaire->id)}}"><i
                                                 class="fa fa-1x fa-trash sr-icons"></i> </a>
-
 
 
                                     </td>
 
 
                                 </tr>
-                             @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -98,7 +101,6 @@
         </div>
     </div>
     <!-- create -->
-
 
 @endsection
 

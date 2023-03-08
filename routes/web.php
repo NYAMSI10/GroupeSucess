@@ -108,7 +108,13 @@ Route::middleware('admin')->group(function () {
 
         });
 
+        Route::controller(\App\Http\Controllers\PresenceController::class)->name('presences.')->group(function() {
 
+            Route::get('accept/{presence}', 'accept')->name('accept');
+            Route::get('noaccept/{presence}', 'noaccept')->name('noaccept');
+            Route::get('vos_absences', 'absence')->name('absence');
+
+        });
 
          // ROUTE RESOURCE
         Route::resource('matiere', MatiereController::class);
@@ -119,6 +125,7 @@ Route::middleware('admin')->group(function () {
         Route::resource('evenements', \App\Http\Controllers\EvenementController::class);
         Route::resource('discipline',AppelController::class);
         Route::resource('profil', \App\Http\Controllers\ProfilController::class);
+        Route::resource('presence',\App\Http\Controllers\PresenceController::class);
 
     });
 });

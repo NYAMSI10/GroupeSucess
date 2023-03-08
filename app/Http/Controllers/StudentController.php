@@ -151,6 +151,7 @@ class StudentController extends Controller
                 'classe' => 'required',
                 'periode' => 'required',
                 'tel' => 'required|',
+                'annee'=>'required'
             ],
         );
 
@@ -164,20 +165,21 @@ class StudentController extends Controller
             "inscription" => $request->inscription,
             "classe_id" => $request->classe,
             "periode_id" => $request->periode,
+            "annee"=>$request->annee,
 
         ]);
 
         if ($request->periode == 1) {
-            return redirect()->route('student.index')->with('sucess', "l\' élève a été ajouté");
+            return redirect()->route('student.index')->with('sucess', "l\' élève a été modifié");
 
         } elseif ($request->periode == 2) {
-            return redirect()->route('students.soir')->with('sucess', "l\' élève a été ajouté");
+            return redirect()->route('students.soir')->with('sucess', "l\' élève a été modifié");
 
         } elseif ($request->periode == 3) {
-            return redirect()->route('students.vacance')->with('sucess', "l\' élève a été ajouté");
+            return redirect()->route('students.vacance')->with('sucess', "l\' élève a été modifié");
 
         } elseif ($request->periode == 4) {
-            return redirect()->route('students.concour')->with('sucess', "l\' élève a été ajouté");
+            return redirect()->route('students.concour')->with('sucess', "l\' élève a été modifié");
 
         }
     }

@@ -79,8 +79,6 @@ class UserController extends Controller
                 'email' => 'required|unique:users',
                 'quartier' => 'required',
                 'tel' => 'required|unique:users',
-
-
             ],
         );
         function rand($length)
@@ -98,54 +96,55 @@ class UserController extends Controller
             "email" => $request->email,
             "password" => $mot,
         ];
-        Mail::to($request->email)->send(new Testmarkdown($user));
+
+         Mail::to($request->email)->send(new Testmarkdown($user));
 
 
-        User::create([
+            User::create([
 
-            "nom" => $request->nom,
-            "email" => $request->email,
-            "quartier" => $request->quartier,
-            "tel" => $request->tel,
-            "is_admin" => $request->role,
-            "password" => Hash::make($mot),
-            "active"=> 1 ,
-        ]);
-
-        $iduser = \DB::table('users')->where('tel', $request->tel)->value('id');
-
-        foreach ($request->periode as $period) {
-            Periodeteacher::create([
-                "periode_id" => $period,
-                "user_id" => $iduser,
+                "nom" => $request->nom,
+                "email" => $request->email,
+                "quartier" => $request->quartier,
+                "tel" => $request->tel,
+                "is_admin" => $request->role,
+                "password" => Hash::make($mot),
+                "active"=> 1 ,
             ]);
-        }
-        foreach ($request->classe as $classes) {
-            classeteacher::create([
-                "classe_id" => $classes,
-                "user_id" => $iduser,
-            ]);
-        }
 
-        foreach ($request->matiere as $matieres) {
-            matiereteacher::create([
-                "matiere_id" => $matieres,
-                "user_id" => $iduser,
-            ]);
-        }
-        if ($request->periode[0] == 1 ){
-            return redirect()->route('user.index')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+            $iduser = \DB::table('users')->where('tel', $request->tel)->value('id');
 
-        }elseif($request->periode[0] == 2 ){
-            return redirect()->route('users.soir')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+            foreach ($request->periode as $period) {
+                Periodeteacher::create([
+                    "periode_id" => $period,
+                    "user_id" => $iduser,
+                ]);
+            }
+            foreach ($request->classe as $classes) {
+                classeteacher::create([
+                    "classe_id" => $classes,
+                    "user_id" => $iduser,
+                ]);
+            }
 
-        }elseif($request->periode[0]== 3 ){
-            return redirect()->route('users.vacance')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+            foreach ($request->matiere as $matieres) {
+                matiereteacher::create([
+                    "matiere_id" => $matieres,
+                    "user_id" => $iduser,
+                ]);
+            }
+          if ($request->periode[0] == 1 ){
+                return redirect()->route('user.index')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
 
-        }elseif($request->periode[0] == 4){
-            return redirect()->route('users.concour')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+            }elseif($request->periode[0] == 2 ){
+                return redirect()->route('users.soir')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
 
-        }
+            }elseif($request->periode[0]== 3 ){
+                return redirect()->route('users.vacance')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+
+            }elseif($request->periode[0] == 4){
+                return redirect()->route('users.concour')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+
+            }
     }
 
 
