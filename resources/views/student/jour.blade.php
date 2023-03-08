@@ -39,6 +39,7 @@
                                 <th class="text-center">Quartier</th>
                                 <th class="text-center">Tel du parent</th>
                                 <th class="text-center">Classe</th>
+                                <th class="text-center">Année académique</th>
                                 <th class="text-center">Frais de cours</th>
                                 <th class="text-center">Opération</th>
 
@@ -54,6 +55,7 @@
                                     <td class="text-center">{{$student->quartier}}</td>
                                     <td class="text-center">{{$student->tel}}</td>
                                     <td class="text-center">{{ nomclas($student->classe_id) }}</td>
+                                    <td class="text-center">{{ $student->annee}}</td>
 
                                     <td class="text-center">
                                         <a class="btn btn-space btn-info btn-xs voir" href="{{ route('students.frais', $student->id)}}"><i

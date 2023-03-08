@@ -112,8 +112,12 @@
 
                         </ul>
                     </li>
-
-
+                    <li>
+                        <a href="{{route('presence.index')}}"><i class="fa fa-edit"></i> <span class="nav-label">Présence </span></a>
+                    </li>
+                    <li>
+                        <a href="{{route('presences.absence') }}"><i class="fa fa-edit"></i> <span class="nav-label">Vos absences </span></a>
+                    </li>
 
 
                 </ul>

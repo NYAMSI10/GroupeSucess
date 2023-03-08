@@ -149,7 +149,7 @@
                             <div class="form-group">
                                 <label class="form-label"> Année Académique </label>
                                 <input type="text" class="form-control" name="annee"
-                                       value="{{annees()}}" disabled>
+                                       value="{{$student->annee }}" >
 
                             </div>
                         </div>
