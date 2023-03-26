@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Connexion;
 use App\Mail\Testmarkdown;
 use App\Models\Classeteacher;
 use App\Models\Matiereteacher;
@@ -97,7 +98,7 @@ class UserController extends Controller
             "password" => $mot,
         ];
 
-         Mail::to($request->email)->send(new Testmarkdown($user));
+         Mail::to($request->email)->send(new Connexion($user));
 
 
             User::create([

@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -13,10 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class Presences extends Mailable
 {
     use Queueable, SerializesModels;
-
     public $user=[];
-
-
     /**
      * Create a new message instance.
      *
@@ -48,7 +46,7 @@ class Presences extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emails.presence',
+            view: 'emails.presence',
         );
     }
 
@@ -59,6 +57,8 @@ class Presences extends Mailable
      */
     public function attachments()
     {
-        return [];
+        return [
+            //   Attachment::fromPath(public_path('img/a1.jpg'))->as('photo'),
+        ];
     }
 }

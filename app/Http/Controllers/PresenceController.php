@@ -71,10 +71,17 @@ class PresenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Presence $presence)
     {
-        //
+         $presence->update([
+
+             'start'=>$request->start,
+             'end'=> $request->end,
+         ]);
+
+         return redirect()->route('presence.index')->with('sucess', 'Horraire modifié avec sucess');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -109,8 +116,7 @@ class PresenceController extends Controller
 
         Mail::to(users($user['nom'])->email)->send(new Presences($user));
 
-        return redirect()->route('presence.index')->with('sucess', 'Vous avez confirmer la présence de cet
-         enseignant au cour');
+        return redirect()->route('presence.index')->with('sucess', 'Vous avez confirmer la présence de cet enseignant au cour');
     }
     public function noaccept(Presence $presence)
     {
@@ -132,8 +138,7 @@ class PresenceController extends Controller
 
 
 
-        return redirect()->route('presence.index')->with('sucess', 'Malheureusement! Vous n\'avez pas
-        confirmer la présence de cet  enseignant au cour');
+        return redirect()->route('presence.index')->with('sucess', 'Malheureusement! Vous n\'avez pas confirmer la présence de cet  enseignant');
 
 
     }
@@ -143,5 +148,10 @@ class PresenceController extends Controller
         $presences = Presence::where('user_id', auth()->user()->id)->where('accept',0)->get();
 
         return view('vos_absences', compact('presences'));
+    }
+    public function editPresence(Presence $presence)
+    {
+     return view('presence.update', compact('presence'));
+
     }
 }

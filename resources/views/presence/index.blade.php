@@ -66,8 +66,7 @@
                                         @endif
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href=""><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
-
+                                           style="color:white;" href="{{route('presences.editPresence', $presence->id)}}"><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
                                     </td>
 
@@ -83,9 +82,31 @@
         </div>
     </div>
 
+
 @endsection
 
 @section('script')
+
+    <script>
+        window.addEventListener('close-modal', event =>{
+            $('#addStudentModal').modal('hide');
+            $('#editStudentModal').modal('hide');
+            $('#deleteStudentModal').modal('hide');
+        });
+
+        window.addEventListener('show-edit-student-modal', event =>{
+            $('#editStudentModal').modal('show');
+        });
+
+        window.addEventListener('show-delete-confirmation-modal', event =>{
+            $('#deleteStudentModal').modal('show');
+        });
+
+        window.addEventListener('show-view-student-modal', event =>{
+            $('#viewStudentModal').modal('show');
+        });
+    </script>
+
 
     <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
 

@@ -14,8 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $data=[];
+    public $user=[];
     /**
      * Create a new message instance.
      *
@@ -23,7 +22,7 @@ class TestMail extends Mailable
      */
     public function __construct(Array $user)
     {
-         $this->data = $user;
+        $this->user= $user;
     }
 
     /**
@@ -34,8 +33,8 @@ class TestMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('Nyamsi@test.com'),
-            subject: 'Test Mail',
+            from: new Address('groupesucess+@gmail.com'),
+            subject: 'Présence au cour ',
         );
     }
 
@@ -47,7 +46,7 @@ class TestMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.test',
+            view: 'emails.presence',
         );
     }
 
@@ -59,7 +58,7 @@ class TestMail extends Mailable
     public function attachments()
     {
         return [
-             Attachment::fromPath(public_path('img/a1.jpg'))->as('photo'),
+          //   Attachment::fromPath(public_path('img/a1.jpg'))->as('photo'),
         ];
     }
 }

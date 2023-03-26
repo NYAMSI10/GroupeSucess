@@ -2,29 +2,27 @@
 
 namespace App\Mail;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Testmarkdown extends Mailable
+class Connexion extends Mailable
 {
     use Queueable, SerializesModels;
-
-     public $url = 'http://127.0.0.1:8001/Connexion';
-     public $user=[];
+    public $user=[];
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct( Array $user)
+    public function __construct(Array $user)
     {
-         $this->user = $user;
+        $this->user= $user;
     }
 
     /**
@@ -36,7 +34,7 @@ class Testmarkdown extends Mailable
     {
         return new Envelope(
             from: new Address('groupesucess+@gmail.com'),
-            subject: 'Paramètre de connexion',
+            subject: 'Présence au cour ',
         );
     }
 
@@ -48,7 +46,7 @@ class Testmarkdown extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emails.markdown-test',
+            view: 'emails.connexion',
         );
     }
 
@@ -59,6 +57,8 @@ class Testmarkdown extends Mailable
      */
     public function attachments()
     {
-        return [];
+        return [
+            //   Attachment::fromPath(public_path('img/a1.jpg'))->as('photo'),
+        ];
     }
 }

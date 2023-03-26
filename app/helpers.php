@@ -173,3 +173,12 @@ if (!function_exists('nomuser')) {
         return $nomuser;
     }}
 
+if(!function_exists('allsujet')){
+
+     function allsujet()
+     {
+           return \App\Models\Epreuve::all();
+     }
+
+}
+
