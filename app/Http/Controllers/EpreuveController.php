@@ -14,7 +14,7 @@ class EpreuveController extends Controller
      */
     public function index()
     {
-        return  view('epreuve.index');
+        return view('epreuve.index');
     }
 
     /**
@@ -30,30 +30,20 @@ class EpreuveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $image = $request->file('file');
 
-        $imageName = time() . '.' . $image->extension();
-
-
-Epreuve::create([
-
-        'user_id'=> auth()->user()->id,
-        'file'=>$imageName,
-]);
-        $image->move(public_path('epreuve'), $imageName);
-
-        return response()->json(['success' => $imageName])->with('sucess', 'ok bb');
+       dump($image);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,7 +54,7 @@ Epreuve::create([
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -75,8 +65,8 @@ Epreuve::create([
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -87,7 +77,7 @@ Epreuve::create([
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -96,9 +86,21 @@ Epreuve::create([
     }
 
 
-    public function allsujet() {
+    public function allsujet()
+    {
 
-         return view('epreuve.allsujet');
+        return view('epreuve.allsujet');
+    }
+
+    public function download(Epreuve $sujet)
+    {
+        $filePath = public_path("epreuve/" . $sujet->file);
+
+        $headers = ['Content-Type: application/pdf'];
+
+        $fileName = time() . '.pdf';
+
+        return response()->download($filePath, $fileName, $headers);
     }
 
 }

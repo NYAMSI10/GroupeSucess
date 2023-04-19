@@ -120,6 +120,7 @@ Route::middleware('admin')->group(function () {
         Route::controller(\App\Http\Controllers\EpreuveController::class)->name('sujet.')->group(function (){
 
             Route::get('allsujet', 'allsujet')->name('allsujet');
+            Route::get('download/{sujet}', 'download')->name('download');
 
         });
 

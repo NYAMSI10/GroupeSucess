@@ -53,7 +53,7 @@
                         @foreach(allsujet() as $sujet)
                         <div class="file-box">
                             <div class="file">
-                                <a href="#">
+                                <a href="{{route('sujet.download', $sujet->id)}}">
                                     <span class="corner"></span>
 
                                     <div class="icon">
