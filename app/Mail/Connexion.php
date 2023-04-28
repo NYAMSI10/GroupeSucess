@@ -34,7 +34,7 @@ class Connexion extends Mailable
     {
         return new Envelope(
             from: new Address('groupesucess+@gmail.com'),
-            subject: 'Présence au cour ',
+            subject: 'Paramétre de connexion ',
         );
     }
 

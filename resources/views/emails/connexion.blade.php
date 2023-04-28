@@ -10,7 +10,7 @@
 <body>
 Bonjour Mr/Mme {{$user['nom']}}
 
-<p> Le GroupeSucess+ a le plaisir de vous informer de la creation de votre espace profession.
+<p> Le GroupeSucess+ a le plaisir de vous informer de la creation de votre espace professeur.
     Voici vos paramètre de connexion: </p>
 <br>
 <p> Email : <strong> {{$user['email']}}</strong> </p>
@@ -22,7 +22,7 @@ Veuillez vous connecter en clique sur ce bouton
 
 <button type="submit" class="btn-primary">Connexion</button>
 
-
+<br>
 
 <img src="{{asset('asset/img/logo.jpg')}}" width="50" height="50" style="margin-left: 5%">
 

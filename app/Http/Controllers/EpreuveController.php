@@ -36,8 +36,18 @@ class EpreuveController extends Controller
     public function store(Request $request)
     {
         $image = $request->file('file');
+        //  $file_name = $image->getClientOriginalName();
+        $imageName = $image->getClientOriginalName();
 
-       dump($image);
+
+        Epreuve::create([
+
+            'user_id' => auth()->user()->id,
+            'file' => $imageName,
+        ]);
+        $image->move(public_path('epreuve'), $imageName);
+
+        return response()->json(['success' => $imageName])->with('sucess', 'ok bb');
     }
 
     /**
@@ -74,15 +84,10 @@ class EpreuveController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(Epreuve $sujet)
     {
-        //
+        echo $sujet;
     }
 
 
@@ -98,9 +103,30 @@ class EpreuveController extends Controller
 
         $headers = ['Content-Type: application/pdf'];
 
-        $fileName = time() . '.pdf';
+        $fileName = $sujet->file;
 
         return response()->download($filePath, $fileName, $headers);
     }
 
+    public function delete(Epreuve $sujet)
+    {
+        unlink('epreuve/' . $sujet->file);
+        $sujet->delete();
+
+        return redirect()->route('sujet.allsujet')->with('sucess','Epreuve supprimée');
+    }
+
+    public function sujets()
+    {
+        $sujet = Epreuve::where('user_id', auth()->user()->id)->get();
+
+        return view('epreuve.mysujet', compact('sujet'));
+    }
+    public function sujetsdelete(Epreuve $sujet)
+    {
+        unlink('epreuve/' . $sujet->file);
+        $sujet->delete();
+
+        return redirect()->route('sujet.messujets')->with('sucess','Epreuve supprimée');
+    }
 }

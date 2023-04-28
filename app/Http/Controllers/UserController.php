@@ -91,61 +91,61 @@ class UserController extends Controller
 
         $mot = rand(8);
 
-        $user =[
+        $user = [
 
             "nom" => $request->nom,
             "email" => $request->email,
             "password" => $mot,
         ];
 
-         Mail::to($request->email)->send(new Connexion($user));
+        Mail::to($request->email)->send(new Connexion($user));
 
 
-            User::create([
+        User::create([
 
-                "nom" => $request->nom,
-                "email" => $request->email,
-                "quartier" => $request->quartier,
-                "tel" => $request->tel,
-                "is_admin" => $request->role,
-                "password" => Hash::make($mot),
-                "active"=> 1 ,
+            "nom" => $request->nom,
+            "email" => $request->email,
+            "quartier" => $request->quartier,
+            "tel" => $request->tel,
+            "is_admin" => $request->role,
+            "password" => Hash::make($mot),
+            "active" => 1,
+        ]);
+
+        $iduser = \DB::table('users')->where('tel', $request->tel)->value('id');
+
+        foreach ($request->periode as $period) {
+            Periodeteacher::create([
+                "periode_id" => $period,
+                "user_id" => $iduser,
             ]);
+        }
+        foreach ($request->classe as $classes) {
+            classeteacher::create([
+                "classe_id" => $classes,
+                "user_id" => $iduser,
+            ]);
+        }
 
-            $iduser = \DB::table('users')->where('tel', $request->tel)->value('id');
+        foreach ($request->matiere as $matieres) {
+            matiereteacher::create([
+                "matiere_id" => $matieres,
+                "user_id" => $iduser,
+            ]);
+        }
+        if ($request->periode[0] == 1) {
+            return redirect()->route('user.index')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
 
-            foreach ($request->periode as $period) {
-                Periodeteacher::create([
-                    "periode_id" => $period,
-                    "user_id" => $iduser,
-                ]);
-            }
-            foreach ($request->classe as $classes) {
-                classeteacher::create([
-                    "classe_id" => $classes,
-                    "user_id" => $iduser,
-                ]);
-            }
+        } elseif ($request->periode[0] == 2) {
+            return redirect()->route('users.soir')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
 
-            foreach ($request->matiere as $matieres) {
-                matiereteacher::create([
-                    "matiere_id" => $matieres,
-                    "user_id" => $iduser,
-                ]);
-            }
-          if ($request->periode[0] == 1 ){
-                return redirect()->route('user.index')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+        } elseif ($request->periode[0] == 3) {
+            return redirect()->route('users.vacance')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
 
-            }elseif($request->periode[0] == 2 ){
-                return redirect()->route('users.soir')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
+        } elseif ($request->periode[0] == 4) {
+            return redirect()->route('users.concour')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
 
-            }elseif($request->periode[0]== 3 ){
-                return redirect()->route('users.vacance')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
-
-            }elseif($request->periode[0] == 4){
-                return redirect()->route('users.concour')->with('sucess', 'l\' enseignant a été enregistré avec sucess');
-
-            }
+        }
     }
 
 
@@ -229,16 +229,16 @@ class UserController extends Controller
                 "user_id" => $user->id,
             ]);
         }
-        if ($request->periode[0] == 1 ){
+        if ($request->periode[0] == 1) {
             return redirect()->route('user.index')->with('sucess', 'les informations  ont été modifies ');
 
-        }elseif($request->periode[0] == 2 ){
+        } elseif ($request->periode[0] == 2) {
             return redirect()->route('users.soir')->with('sucess', 'les informations  ont été modifies ');
 
-        }elseif($request->periode[0]== 3 ){
+        } elseif ($request->periode[0] == 3) {
             return redirect()->route('users.vacance')->with('sucess', 'les informations  ont été modifies ');
 
-        }elseif($request->periode[0] == 4){
+        } elseif ($request->periode[0] == 4) {
             return redirect()->route('users.concour')->with('sucess', 'les informations  ont été modifies ');
 
         }
@@ -257,6 +257,26 @@ class UserController extends Controller
         $deleperiod = DB::table('periode_user')->where('user_id', $user->id)->delete();
         $deleclass = DB::table('classe_user')->where('user_id', $user->id)->delete();
         $delematiere = DB::table('matiere_user')->where('user_id', $user->id)->delete();
+        $deleteepreuve = DB::table('epreuves')->where('user_id', $user->id)->delete();
+        $deleteappel = DB::table('appels')->where('user_id', $user->id)->delete();
+        $deletesalaire = DB::table('salaires')->where('user_id', $user->id)->delete();
+        $deletepresence = DB::table('presences')->where('user_id', $user->id)->delete();
+        $deleteprime = DB::table('prime_user')->where('user_id', $user->id)->delete();
+
+        $user->delete();
+        return redirect()->route('user.index')->with('sucess', 'les informations  ont été supprimées ');
+
+    }
+    public function delete(user $user)
+    {
+        $deleperiod = DB::table('periode_user')->where('user_id', $user->id)->delete();
+        $deleclass = DB::table('classe_user')->where('user_id', $user->id)->delete();
+        $delematiere = DB::table('matiere_user')->where('user_id', $user->id)->delete();
+        $deleteepreuve = DB::table('epreuves')->where('user_id', $user->id)->delete();
+        $deleteappel = DB::table('appels')->where('user_id', $user->id)->delete();
+        $deletesalaire = DB::table('salaires')->where('user_id', $user->id)->delete();
+        $deletepresence = DB::table('presences')->where('user_id', $user->id)->delete();
+        $deleteprime = DB::table('prime_user')->where('user_id', $user->id)->delete();
 
         $user->delete();
         return redirect()->route('user.index')->with('sucess', 'les informations  ont été supprimées ');
@@ -272,7 +292,7 @@ class UserController extends Controller
 
         $remember_me = $request->has('remember') ? true : false;
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password],$remember_me)) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember_me)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         }
@@ -291,27 +311,27 @@ class UserController extends Controller
             'pass' => 'Vous Vous etes déconnecté ',
         ]);
     }
-    public function  listuser()
+
+    public function listuser()
     {
 
-           return view('listuser');
+        return view('listuser');
     }
 
-    public function  actif(User $user)
+    public function actif(User $user)
     {
 
-            DB::table('users')->where('id',$user->id)->update(["active"=>1]);
+        DB::table('users')->where('id', $user->id)->update(["active" => 1]);
 
         return redirect()->route('users.list')->with('sucess', 'Le compte a été activé de nouveau');
 
     }
 
 
-    public function  desactif(User $user)
+    public function desactif(User $user)
     {
 
-        DB::table('users')->where('id',$user->id)->update(["active"=>0]);
-
+        DB::table('users')->where('id', $user->id)->update(["active" => 0]);
 
 
         return redirect()->route('users.list')->with('sucess', 'Le compte a été désactivé de nouveau');

@@ -65,7 +65,7 @@
                                         <small>Send : {{$sujet->created_at->format('D-M-Y')}}</small>
                                         <br>
                                         <small>By : {{nomuser($sujet->user_id)->nom}}</small>
-                                        <a href="#" style="margin-left: 57%; color:red" class="remove_image"><i class="fa fa-trash-o "></i></a>
+                                        <a href="{{route('sujet.mysujet',$sujet->id)}}" style="margin-left: 57%; color:red" class="remove_image" onclick="return confirm('Voulez-vous vraiment supprimer cette epreuve?')"><i class="fa fa-trash-o "></i></a>
                                     </div>
                                 </a>
                             </div>

@@ -83,7 +83,7 @@
             <ul class="nav nav-second-level collapse">
                 <li><a href="{{route('epreuve.index') }}"> Envoyé sujet</a></li>
                 <li><a href="{{route('sujet.allsujet')}}">Tous sujets</a></li>
-                <li><a href="{{route('appel.absent')}}">Mes sujets</a></li>
+                <li><a href="{{route('sujet.messujets')}}">Mes sujets</a></li>
 
 
             </ul>
