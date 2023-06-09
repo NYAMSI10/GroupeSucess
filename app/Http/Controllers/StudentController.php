@@ -72,6 +72,7 @@ class StudentController extends Controller
                 'quartier' => 'required',
                 'classe' => 'required',
                 'periode' => 'required',
+                'rame' => 'required',
                 'tel' => 'required|unique:students',
             ],
         );
@@ -86,6 +87,8 @@ class StudentController extends Controller
             "inscription" => $request->inscription,
             "classe_id" => $request->classe,
             "periode_id" => $request->periode,
+            "rame" => $request->rame,
+            "code" =>rande(8),
             "annee" => annees(),
         ]);
 

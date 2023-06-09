@@ -180,5 +180,13 @@ if(!function_exists('allsujet')){
            return \App\Models\Epreuve::all();
      }
 
+}if(!function_exists('rande')){
+
+    function rande($length)
+    {
+
+        $chars = "ABCDEFGHI012345JKLMNOPQRSTUVWXYZ6789";
+        return substr(str_shuffle($chars), 0, $length);
+    }
 }
 

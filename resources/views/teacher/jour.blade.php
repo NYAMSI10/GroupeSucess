@@ -17,7 +17,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Liste des Enseignants du cours de Jour </h5>
+                    <h5>Liste des Enseignants du Jour </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -55,9 +55,9 @@
                                     <td class="text-center">{{$tea->quartier}}</td>
                                     <td class="text-center">{{$tea->tel}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-space btn-info btn-xs voir" href="{{ route('salaires.salaire', $tea->id)}}"><i
-                                                class="fa fa-1x fa-money sr-icons" ></i></a>
-
+                                        <a class="btn btn-space btn-info btn-xs voir"
+                                           href="{{ route('salaires.salaire', $tea->id)}}"><i
+                                                class="fa fa-1x fa-money sr-icons"></i></a>
                                     </td>
                                     <td class="text-center">
 
@@ -95,6 +95,36 @@
 
     <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
 
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
 
+            // update modal
+
+            var table = $('#datatable').DataTable();
+
+            table.on('click', '.voir', function () {
+
+
+                $tr = $(this).closest('tr');
+                if ($($tr).hasClass('child')) {
+                    $tr = $tr.prev('.parent');
+                }
+
+                var data = table.row($tr).data();
+                console.log(data);
+
+
+                $('#nom').val(data);
+
+
+                $('#viewform').attr('action', '/classe/' + data);
+                $('#update').modal('show');
+
+
+            });
+        });
+
+    </script>
 
 @endsection

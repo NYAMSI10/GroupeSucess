@@ -55,10 +55,10 @@
                 @enderror
             </div>
             <div class="checkbox m-r-xs" style="margin-left: -40%;">
-                                    <input type="checkbox" id="checkbox1" name="remember" style="margin-left: 0.5%;">
-                                    <label for="checkbox1">
-Se Souvenir de moi                                    </label>
-                                </div>
+                <input type="checkbox" id="checkbox1" name="remember" style="margin-left: 0.5%;">
+                <label for="checkbox1">
+                    Se Souvenir de moi </label>
+            </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Conexion</button>
 
 
@@ -69,8 +69,8 @@ Se Souvenir de moi                                    </label>
 </div>
 
 <!-- Mainly scripts -->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="{{asset('js/jquery-2.1.1.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 
 </body>
 

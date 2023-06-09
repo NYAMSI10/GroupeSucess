@@ -146,18 +146,36 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label"> Année Académique </label>
-                                    <input type="text" class="form-control" name="annee"
-                                           value="{{annees()}}" disabled>
+                                    <label class="form-label"> Déja payer les frais de Rame de papier? </label>
+
+                                    <select class="select2 form-control" name="rame" required >
+                                        <option value=" ">Choisir une option</option>
+                                        <option value="1">oui</option>
+                                        <option value="0">Non</option>
+
+
+                                    </select>
 
                                 </div>
                             </div>
 
                         </div>
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label"> Année Académique </label>
+                                <input type="text" class="form-control" name="annee"
+                                       value="{{annees()}}" disabled>
+
+                            </div>
+                        </div>
+                        </div>
                         <br>
                         <div class="form-group" style="margin-right: 47%;">
                             <button class="btn btn-md btn-primary pull-right" type="submit">Valider</button>
                         </div>
+                        <br>
+
                     </form>
                 </div>
             </div>

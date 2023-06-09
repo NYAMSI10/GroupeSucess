@@ -48,7 +48,7 @@
                                 <tr>
                                     <td class="text-center">{{$event->created_at->format('d-m-Y \à H:i') }}</td>
                                     <td class="text-center">{{$event->nom}}</td>
-                                    <td class="text-center"> <strong>{{$event->montant}} CFA</strong></td>
+                                    <td class="text-center"><strong>{{$event->montant}} CFA</strong></td>
                                     <td class="text-center">
                                         @if($event->status == 'ongoing')
                                             <span class="label label-primary">En cours</span>
@@ -58,13 +58,14 @@
                                             <span class="label label-warning">Annulé</span>
 
                                         @endif
-                                        </td>
+                                    </td>
 
                                     <td class="text-center">
                                         <!-- <a class="btn btn-space btn-info btn-xs voir" ><i class="fa fa-1x fa-eye sr-icons"></i></a> -->
 
                                         <a target="_blank" class=" btn btn-space btn-primary btn-xs sr-icons "
-                                           style="color:white;" href="{{ route('primes.show', $event->id)}}"><i class="fa fa-1x fa-pencil sr-icons"></i> </a>
+                                           style="color:white;" href="{{ route('primes.show', $event->id)}}"><i
+                                                class="fa fa-1x fa-pencil sr-icons"></i> </a>
 
                                         <form action="{{ route('evenements.destroy', $event->id)}}" method="post"
                                               style="display: inline-block">
@@ -101,7 +102,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="value">Nom de l'vènement'</label>
                                     <input type="text" class="form-control" name="nom" id="nom"
-                                           value="{{ old('nom') }}" required >
+                                           value="{{ old('nom') }}" required>
 
 
                                 </div>
@@ -109,8 +110,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="control-label" for="value">Montant à contribuer</label>
-                                    <input type="text" class="form-control" name="montant"  id="montant"
-                                           value="{{ old('nom') }}"  required>
+                                    <input type="text" class="form-control" name="montant" id="montant"
+                                           value="{{ old('nom') }}" required>
 
 
                                 </div>
@@ -119,7 +120,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="sub"  ><i class="fa fa-save"></i></button>
+                        <button type="submit" class="btn btn-primary" id="sub"><i class="fa fa-save"></i></button>
                         <button type="button" class="btn btn-white" data-dismiss="modal"><i
                                 class="fa fa-times"></i></button>
                     </div>
@@ -127,7 +128,6 @@
             </div>
         </div>
     </div>
-
 
 @endsection
 @section('script')
@@ -165,8 +165,6 @@
         });
 
     </script>
-
-
 
 @endsection
 

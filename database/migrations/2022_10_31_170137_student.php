@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('tel')->unique();
             $table->string('annee');
             $table->string('inscription')->nullable();
+            $table->boolean('rame');
+            $table->string('code');
 
             $table->timestamps();
         });

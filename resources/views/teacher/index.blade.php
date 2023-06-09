@@ -135,8 +135,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label"> Role </label>
-                                    <select class="form-control" name="role" >
-                                        <option value="0"></option>
+                                    <select class="form-control select2" name="role" >
+                                        <option value="0">Enseignant</option>
                                         <option value="1">Administrateur</option>
 
                                     </select>
