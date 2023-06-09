@@ -37,13 +37,7 @@
 
     <style>
 
-        th {
-            font-size: 15px;
-        }
 
-        td {
-            font-size: 13px;
-        }
     </style>
 </head>
 
@@ -56,7 +50,7 @@
 
             </div>
 
-            <div class="col-sm-20 text-right" style="margin-left: 10%;">
+            <div class="col-sm-20 text-right" style="margin-left: 10%;font-size: 17px">
                 <h1 class="document-type text-navy">Bulletin de Paie</h1>
 
                 <h4>15 {{$salaire->mois}}</h4>
@@ -65,7 +59,7 @@
             <br>
             <br>
 
-            <div class="col-5 text-right" style="margin-left: 20%; margin-top:1%;font-size: 12px;">
+            <div class="col-5 text-right" style="margin-left: 20%; margin-top:1%;font-size: 17px;">
 
                 <p style="width: 150%;" style="font-size: 15px;">
 
@@ -85,7 +79,7 @@
         </div>
 
 
-        <table class="table table-striped" style="margin-top: 2%;">
+        <table class="table table-striped" style="margin-top: 2%; font-size: 20px">
             <thead>
             <tr>
                 <th class="text-center">Description</th>
@@ -167,7 +161,7 @@
         <div class="row">
             <div class="col-8">
             </div>
-            <div class="col-4">
+            <div class="col-4" style="font-size: 17px">
                 <table class="table table-sm text-right" style="margin-left: -8%;">
                     <tr>
                         <td><strong>Net à payer : </strong></td>
@@ -195,7 +189,7 @@
 
 
 <script>
-    window.print()
+  window.print()
 
 </script>
 

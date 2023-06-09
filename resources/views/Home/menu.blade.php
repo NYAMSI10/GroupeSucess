@@ -2,7 +2,13 @@
     <ul class="nav metismenu" id="side-menu">
         <li class="nav-header">
             <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="{{asset('photo/'.users(auth()->user()->id)->image)}}" width="50" height="50"/>
+                    @if(users(auth()->user()->id)->image == null)
+                        <img alt="image" class="img-circle" src="{{asset('asset/img/logo.jpg')}}" width="50" height="50"/>
+
+                    @else
+                        <img alt="image" class="img-circle" src="{{asset('photo/'.users(auth()->user()->id)->image)}}" width="50" height="50"/>
+
+                    @endif
                              </span>
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->nom}}</strong>

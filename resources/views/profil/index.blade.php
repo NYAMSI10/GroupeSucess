@@ -28,8 +28,13 @@
                 <div class="col-md-6">
 
                     <div class="profile-image">
-                        <img src="{{asset('photo/'.users(auth()->user()->id)->image)}}" class="img-circle circle-border m-b-md" alt="profile">
-                    </div>
+                        @if(users(auth()->user()->id)->image == null)
+                            <img alt="image" class="img-circle" src="{{asset('asset/img/logo.jpg')}}" width="50" height="50"/>
+
+                        @else
+                            <img alt="image" class="img-circle" src="{{asset('photo/'.users(auth()->user()->id)->image)}}" width="50" height="50"/>
+
+                        @endif                    </div>
                     <div class="profile-info">
                         <div class="">
                             <div>

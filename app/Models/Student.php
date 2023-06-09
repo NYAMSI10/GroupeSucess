@@ -16,7 +16,7 @@ class Student extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'annee','nom','classe_id','quartier','school','periode_id','tel','inscription'
+        'annee','nom','classe_id','quartier','school','periode_id','tel','inscription','code','rame'
 
     ];
 

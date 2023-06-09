@@ -82,14 +82,9 @@ class UserController extends Controller
                 'tel' => 'required|unique:users',
             ],
         );
-        function rand($length)
-        {
 
-            $chars = "ABCDEFGHI012345JKLMNOPQRSTUVWXYZ6789";
-            return substr(str_shuffle($chars), 0, $length);
-        }
 
-        $mot = rand(8);
+        $mot = rande(8);
 
         $user = [
 
@@ -267,6 +262,7 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('sucess', 'les informations  ont été supprimées ');
 
     }
+
     public function delete(user $user)
     {
         $deleperiod = DB::table('periode_user')->where('user_id', $user->id)->delete();
@@ -292,7 +288,7 @@ class UserController extends Controller
 
         $remember_me = $request->has('remember') ? true : false;
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember_me)) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'active'=>1], $remember_me)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         }
